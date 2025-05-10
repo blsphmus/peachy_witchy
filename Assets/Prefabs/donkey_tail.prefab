@@ -76,6 +76,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 52ef068c9b3bd404ebb56e4f744e81cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: -907929655104104763}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 52ef068c9b3bd404ebb56e4f744e81cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8288212421274856125}
   m_SourcePrefab: {fileID: 100100000, guid: 52ef068c9b3bd404ebb56e4f744e81cc, type: 3}
 --- !u!1 &869488392547548394 stripped
 GameObject:
@@ -129,9 +132,8 @@ MonoBehaviour:
   scrollSpeed: 0.5
   minDepth: 2
   maxDepth: 15
-  rotationAxis: {x: 0, y: 1, z: 0}
   rotationSpeed: 10
-  angularDamping: 0.85
+  playerLook: {fileID: 0}
 --- !u!65 &4340307212869082678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -167,5 +169,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DustMushroomPrefabs:
   - {fileID: 6111935535758969837, guid: dd60d50b7f4ebf64fa7b3f36d51288eb, type: 3}
+  explosionForce: 5
+  explosionRadius: 2
+--- !u!114 &8288212421274856125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869488392547548394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f480e8d7cb51ea44ab364cc0f94db1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slicedMushroomPrefabs:
+  - {fileID: 4322584652315800788, guid: 49e9a60d0514edb46bd987630de23641, type: 3}
+  - {fileID: 882300301959441336, guid: 601500f2938cf154eaf2a7fd65a1bd59, type: 3}
   explosionForce: 5
   explosionRadius: 2

@@ -1,5 +1,4 @@
-using System.Diagnostics;
-using UnityEngine;
+п»їusing UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class DragRigidbody : MonoBehaviour
@@ -14,90 +13,95 @@ public class DragRigidbody : MonoBehaviour
     Transform jointTrans;
     float dragDepth;
 
-<<<<<<< Updated upstream
-=======
-    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    public float scrollSpeed = 0.5f;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    public float minDepth = 1.0f;     // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-    public float maxDepth = 15.0f;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    // РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…/РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…
+    public float scrollSpeed = 0.5f;  // РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…
+    public float minDepth = 1.0f;     // РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…
+    public float maxDepth = 15.0f;   // РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р… РїС—Р…РїС—Р… РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…РїС—Р…
 
->>>>>>> Stashed changes
     [Header("Rotation Settings")]
-    public float rotationSpeed = 5f;
-    private bool isRotating; // Флаг режима вращения
-    private Vector3 lastMousePosition;
+    public Vector3 rotationAxis = Vector3.up; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+    public float rotationSpeed = 10f;        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public float angularDamping = 0.85f;
+
+    private Vector3 previousMousePosition;
 
     [Header("References")]
     public PlayerLook playerLook;
 
-
-    void OnMouseDown()
+    void Start()
     {
-<<<<<<< Updated upstream
-        HandleInputBegin(Input.mousePosition);
-=======
-        // пїЅпїЅпїЅпїЅпїЅ LineRendererLocation пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Player
-        GameObject player = GameObject.Find("Player");
-        if (player != null)
+        AutoAssignReferences();
+    }
+
+    
+
+    private void AutoAssignReferences()
+    {
+        // В»С‰РµРј PlayerLook
+        if (playerLook == null)
         {
-            Transform mainCamera = player.transform.Find("Main Camera");
-            if (mainCamera != null)
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
             {
-                Transform wand = mainCamera.Find("wand");
-                if (wand != null)
-                {
-                    Transform foundLocation = wand.Find("LineRendererLocation");
-                    if (foundLocation != null)
-                    {
-                        lineRenderLocation = foundLocation;
+                playerLook = player.GetComponent<PlayerLook>();
 
-                        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ LineRenderer пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-                        LineRenderer foundLR = foundLocation.GetComponent<LineRenderer>();
-                        if (foundLR == null)
-                        {
-                            foundLR = foundLocation.GetComponentInChildren<LineRenderer>();
-                        }
-
-                        if (foundLR != null)
-                        {
-                            lr = foundLR;
-                        }
-                        //else
-                        //{
-                        //    Debug.LogWarning("LineRenderer пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ LineRendererLocation пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
-                        //}
-                    }
-                    //else
-                    //{
-                    //    Debug.LogWarning("LineRendererLocation пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ wand");
-                    //}
-                }
-                //else
-                //{
-                //    Debug.LogWarning("wand пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ Main Camera");
-                //}
+                // в‰€СЃР»Рё РЅРµ РЅР°С€Р»Рё, РїРѕРїСЂРѕР±СѓРµРј РЅР°Р№С‚Рё РІ РґРѕС‡РµСЂРЅРёС… РѕР±СЉРµРєС‚Р°С…
+                if (playerLook == null)
+                    playerLook = player.GetComponentInChildren<PlayerLook>();
             }
-            //else
-            //{
-            //    Debug.LogWarning("Main Camera пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ Player");
-            //}
         }
-        //else
-        //{
-        //    Debug.LogWarning("Player пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ");
-        //}
->>>>>>> Stashed changes
+
+        // В»С‰РµРј LineRendererLocation
+        if (lineRenderLocation == null || lr == null)
+        {
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
+            {
+                Transform mainCamera = player.transform.Find("Main Camera");
+                if (mainCamera != null)
+                {
+                    Transform wand = mainCamera.Find("wand");
+                    if (wand != null)
+                    {
+                        // С•РѕРёСЃРє LineRendererLocation
+                        if (lineRenderLocation == null)
+                            lineRenderLocation = wand.Find("LineRendererLocation");
+
+                        // С•РѕРёСЃРє LineRenderer
+                        if (lr == null && lineRenderLocation != null)
+                        {
+                            lr = lineRenderLocation.GetComponent<LineRenderer>();
+                            if (lr == null)
+                                lr = lineRenderLocation.GetComponentInChildren<LineRenderer>();
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
-    void OnMouseUp()
+    void FixedUpdate()
     {
-        HandleInputEnd(Input.mousePosition);
+        if (jointTrans != null)
+        {
+            Rigidbody connectedRb = jointTrans.GetComponent<ConfigurableJoint>().connectedBody;
+
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            Vector3 torque = connectedRb.transform.TransformDirection(rotationAxis)
+                            * rotationSpeed
+                            * Time.fixedDeltaTime;
+
+            connectedRb.AddTorque(torque, ForceMode.VelocityChange);
+
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            connectedRb.angularVelocity *= angularDamping;
+        }
     }
 
-    void OnMouseDrag()
-    {
-        HandleInput(Input.mousePosition);
-    }
+    void OnMouseDown() => HandleInputBegin(Input.mousePosition);
+    void OnMouseUp() => HandleInputEnd(Input.mousePosition);
+    void OnMouseDrag() => HandleInput(Input.mousePosition);
 
     public void HandleInputBegin(Vector3 screenPosition)
     {
@@ -112,14 +116,18 @@ public class DragRigidbody : MonoBehaviour
             }
         }
 
-        lr.positionCount = 2;
+
+        if (lr != null)
+            lr.positionCount = 2;
     }
 
     public void HandleInput(Vector3 screenPosition)
     {
-        if (jointTrans == null)
-            return;
-        var worldPos = Camera.main.ScreenToWorldPoint(screenPosition);
+        if (jointTrans == null) return;
+
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        dragDepth -= Input.mouseScrollDelta.y * scrollSpeed;
+        dragDepth = Mathf.Clamp(dragDepth, minDepth, maxDepth);
         jointTrans.position = CameraPlane.ScreenToWorldPlanePoint(Camera.main, dragDepth, screenPosition);
 
         DrawRope();
@@ -128,7 +136,10 @@ public class DragRigidbody : MonoBehaviour
     public void HandleInputEnd(Vector3 screenPosition)
     {
         DestroyRope();
-        Destroy(jointTrans.gameObject);
+        if (jointTrans != null)
+        {
+            Destroy(jointTrans.gameObject);
+        }
     }
 
     Transform AttachJoint(Rigidbody rb, Vector3 attachmentPosition)
@@ -144,12 +155,12 @@ public class DragRigidbody : MonoBehaviour
         joint.connectedBody = rb;
         joint.configuredInWorldSpace = true;
 
-        // Устанавливаем движение по всем осям как "Position"
-        joint.xMotion = ConfigurableJointMotion.Limited;
-        joint.yMotion = ConfigurableJointMotion.Limited;
-        joint.zMotion = ConfigurableJointMotion.Limited;
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+        joint.angularXMotion = ConfigurableJointMotion.Free;
+        joint.angularYMotion = ConfigurableJointMotion.Free;
+        joint.angularZMotion = ConfigurableJointMotion.Free;
 
-        // Настраиваем приводы без использования устаревшего JointDriveMode
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         JointDrive drive = new JointDrive
         {
             positionSpring = force,
@@ -160,91 +171,22 @@ public class DragRigidbody : MonoBehaviour
         joint.xDrive = drive;
         joint.yDrive = drive;
         joint.zDrive = drive;
-        joint.slerpDrive = drive;
-        joint.rotationDriveMode = RotationDriveMode.Slerp;
 
         return go.transform;
     }
 
     private void DrawRope()
     {
-        if (jointTrans == null)
-        {
-            return;
-        }
-
+        if (jointTrans == null || lr == null || lineRenderLocation == null) return;
         lr.SetPosition(0, lineRenderLocation.position);
-        lr.SetPosition(1, this.transform.position);
+        lr.SetPosition(1, jointTrans.position);
     }
 
     private void DestroyRope()
     {
-        lr.positionCount = 0;
+        if (lr != null)
+            lr.positionCount = 0;
     }
 
-    void Update()
-    {
-        if (isRotating)
-        {
-            HandleRotation();
-        }
-    }
-
-    void OnMouseOver()
-    {
-        if (jointTrans == null) return; // Добавить проверку
-
-        if (Input.GetMouseButtonDown(1)) // Убрать лишнюю проверку
-        {
-            StartRotation();
-        }
-
-        if (Input.GetMouseButtonUp(1))
-        {
-            StopRotation();
-        }
-    }
-
-    void StartRotation()
-    {
-        if (playerLook == null) // Проверка
-        {
-            //Debug.LogError("PlayerLook не назначен в инспекторе!");
-            return;
-        }
-
-        isRotating = true;
-        lastMousePosition = Input.mousePosition;
-
-        playerLook.enabled = false; // Используем публичную ссылку
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    void StopRotation()
-    {
-        if (playerLook == null) // Проверка
-        {
-            //Debug.LogError("PlayerLook не назначен в инспекторе!");
-            return;
-        }
-
-        isRotating = false;
-
-        playerLook.enabled = true; // Используем публичную ссылку
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    void HandleRotation()
-    {
-        Vector3 delta = Input.mousePosition - lastMousePosition;
-        lastMousePosition = Input.mousePosition;
-
-        // Вращаем объект
-        float rotationX = delta.x * rotationSpeed * Time.deltaTime;
-        float rotationY = delta.y * rotationSpeed * Time.deltaTime;
-
-        jointTrans.Rotate(Camera.main.transform.up, -rotationX, Space.World);
-        jointTrans.Rotate(Camera.main.transform.right, rotationY, Space.World);
-    }
+    
 }

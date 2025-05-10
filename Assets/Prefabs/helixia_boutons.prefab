@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e7adf797eff7dc944b27d6eddc3ed1c6, type: 3}
+      propertyPath: m_TagString
+      value: Plant21
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -155,6 +159,5 @@ MonoBehaviour:
   scrollSpeed: 0.5
   minDepth: 5
   maxDepth: 15
-  rotationAxis: {x: 0, y: 1, z: 0}
   rotationSpeed: 10
-  angularDamping: 0.85
+  playerLook: {fileID: 0}

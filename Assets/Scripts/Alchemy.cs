@@ -29,22 +29,11 @@ public class Alchemy : MonoBehaviour
     {
         if (isEmpty && other.CompareTag("Water"))
         {
-<<<<<<< Updated upstream
-            // Ïîëó÷àåì ïîçèöèþ ýôôåêòà êàê òî÷êó ïåðåñå÷åíèÿ
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            // Ñîçäàåì ýôôåêò â òî÷êå êîíòàêòà
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            // Óíè÷òîæàåì îáúåêò âîäû
-=======
             Vector3 collisionPoint = other.ClosestPoint(transform.position);
 
             GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
             Destroy(effect, 1f);
 
->>>>>>> Stashed changes
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.2f, 0.3f, 0.9f);
@@ -387,7 +376,6 @@ public class Alchemy : MonoBehaviour
 
         if (currentY <= 0.5f)
         {
-<<<<<<< Updated upstream
             if      (currentX >= 0 && currentX <= 0.2f) // Ëåâèòàöèÿ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
@@ -431,31 +419,6 @@ public class Alchemy : MonoBehaviour
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-=======
-            if (currentX >= 0f && currentX <= 0.2f)       // Ð›ÐµÐ²Ð¸Ñ‚Ð°Ñ†Ð¸Ñ
-                targetColor = new Color(0.65f, 0.8f, 0.8f);
-            else if (currentX > 0.2f && currentX <= 0.4f) // Ð”Ð¾Ð¶Ð´ÑŒ
-                targetColor = new Color(0.2f, 0.3f, 0.75f);
-            else if (currentX > 0.4f && currentX <= 0.6f) // Ð¡Ð¼ÐµÐ»Ð¾ÑÑ‚ÑŒ
-                targetColor = new Color(0.75f, 0.3f, 0.2f);
-            else if (currentX > 0.6f && currentX <= 0.8f) // ÐžÑ‡Ð°Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ
-                targetColor = new Color(1f, 0f, 0.55f);
-            else if (currentX > 0.8f && currentX <= 1f)   // Ð Ð¾ÑÑ‚
-                targetColor = new Color(0f, 0.85f, 0f);
-        }
-        else
-        {
-            if (currentX >= 0f && currentX <= 0.2f)       // Ð£Ð¼ÐµÐ½ÑŒÑˆÐµÐ½Ð¸Ðµ
-                targetColor = new Color(0.4f, 0f, 0.9f);
-            else if (currentX > 0.2f && currentX <= 0.4f) // ÐÐµÐ²Ð¸Ð´Ð¸Ð¼Ð¾ÑÑ‚ÑŒ
-                targetColor = new Color(0.8f, 0.7f, 0.8f);
-            else if (currentX > 0.4f && currentX <= 0.6f) // Ð¡Ð¾Ð½
-                targetColor = new Color(0f, 0.2f, 0.4f);
-            else if (currentX > 0.6f && currentX <= 0.8f) // Ð’Ð´Ð¾Ñ…Ð½Ð¾Ð²ÐµÐ½Ð¸Ðµ
-                targetColor = new Color(0.9f, 0.8f, 0f);
-            else if (currentX > 0.8f && currentX <= 1f)   // ÐŸÑƒÑˆÐ¸ÑÑ‚Ð¾ÑÑ‚ÑŒ
-                targetColor = new Color(0.9f, 0.5f, 0.4f);
->>>>>>> Stashed changes
         }
 
         return targetColor;
