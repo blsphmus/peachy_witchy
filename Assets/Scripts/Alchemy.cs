@@ -23,10 +23,7 @@ public class Alchemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isEmpty)
-            Potion.SetActive(true);
-        else
-            Potion.SetActive(false);
+        Potion.SetActive(!isEmpty);
 
     }
 
@@ -46,6 +43,8 @@ public class Alchemy : MonoBehaviour
             isEmpty = false;
             _renderer.material.color = new Color(0.2f, 0.3f, 0.9f);
 
+            currentX = 0f; currentY = 0f;
+
         }
         else if (isEmpty && other.CompareTag("Wine"))
         {
@@ -57,6 +56,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.75f, 0f, 0.2f);
+
+            currentX = 0f; currentY = 0f;
         }
         else if (isEmpty && other.CompareTag("Oil"))
         {
@@ -68,6 +69,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.75f, 0.6f, 0.1f);
+
+            currentX = 0f; currentY = 0f;
         }
         else if (!isEmpty && other.CompareTag("Plant1"))
         {
@@ -77,8 +80,9 @@ public class Alchemy : MonoBehaviour
             Destroy(effect, 1f);
 
             Destroy(other.gameObject);
-            currentX += ChekPossibility(currentX, 0.4f);
-            currentY += ChekPossibility(currentY, 0.5f);
+            currentX += CheckPossibility(currentX, 0.4f);
+            currentY += CheckPossibility(currentY, 0.5f);
+            _renderer.material.color += new Color(0.1f, 0.1f, 0.1f);
         }
         else if (!isEmpty && other.CompareTag("Plant2"))
         {
@@ -88,8 +92,9 @@ public class Alchemy : MonoBehaviour
             Destroy(effect, 1f);
 
             Destroy(other.gameObject);
-            currentX += ChekPossibility(currentX, 0.1f);
-            currentY += ChekPossibility(currentY, 0.1f);
+            currentX += CheckPossibility(currentX, -0.7f);
+            currentY += CheckPossibility(currentY, -0.9f);
+            _renderer.material.color += new Color(-0.2f, -0.1f, 0.3f);
         }
         else if (!isEmpty && other.CompareTag("EmptyBottle"))
         {
@@ -98,72 +103,89 @@ public class Alchemy : MonoBehaviour
             GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
             Destroy(effect, 1f);
 
+            ActivateChildren(other.gameObject, true);
+
             PotionCheck();
+            isEmpty = true;
+
+            currentX = 0f; currentY = 0f;
         }
     }
 
     void PotionCheck()
     {
+        Color targetColor = Color.white;
+
         if (currentY <= 0.5)
         {
-            if ( 0 <= currentX <= 0.2) // Левитация
+            if      (currentX >= 0 && currentX <= 0.2f) // Левитация
             {
-                color = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (0.2 < currentX <= 0.4) // Дождь в бутылке
-        {
-                color = new Color(0.75f, 0.6f, 0.1f);
+            else if (currentX > 0.2 && currentX <= 0.4) // Дождь в бутылке
+            {
+                targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (0.4 < currentX <= 0.6) // Смелость
-        {
-                color = new Color(0.75f, 0.6f, 0.1f);
+            else if (currentX > 0.4 && currentX <= 0.6) // Смелость
+            {
+                targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (0.6 < currentX <= 0.8) // Очарование
-        {
-                color = new Color(0.75f, 0.6f, 0.1f);
+            else if (currentX > 0.6 && currentX <= 0.8) // Очарование
+            {
+                targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (0.8 < currentX <= 1) // Рост
-        {
-                color = new Color(0.75f, 0.6f, 0.1f);
+            else if (currentX > 0.8 && currentX <= 1) // Рост
+            {
+                targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
         }
         else
         {
-            if (0 <= currentX <= 0.2) // Уменьшение
-        {
-                color = new Color(0.75f, 0.6f, 0.1f);
+            if (currentX >= 0 && currentX <= 0.2f) // Уменьшение
+            {
+                targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (0.2 < currentX <= 0.4) // Невидимость
-        {
-                color = new Color(0.75f, 0.6f, 0.1f);
+            else if (currentX > 0.2 && currentX <= 0.4) // Невидимость
+            {
+                targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (0.4 < currentX <= 0.6) // Сон
-        {
-                color = new Color(0.75f, 0.6f, 0.1f);
+            else if (currentX > 0.4 && currentX <= 0.6) // Сон
+            {
+                targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (0.6 < currentX <= 0.8) // Вдохновение
-        {
-                color = new Color(0.75f, 0.6f, 0.1f);
+            else if (currentX > 0.6 && currentX <= 0.8) // Вдохновение
+            {
+                targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (0.8 < currentX <= 1) // Пушистость
-        {
-                color = new Color(0.75f, 0.6f, 0.1f);
+            else if (currentX > 0.8 && currentX <= 1) // Пушистость
+            {
+                targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
         }
     }
 
-    void ChekPossibility(a, b)
-    {
-        private float res; 
 
-        if ((a + b) > 1)
+    float CheckPossibility(float a, float b)
+    {
+        if ((a+b) >= 1)
         {
-            res = 1f;
+            return (1 - a);
+        }
+        else if ((a + b) <= 0)
+        {
+            return (a*(-1));
         }
         else
         {
-            res = a + b;
+            return (b);
         }
-        return (res);
+    }
+
+    void ActivateChildren(GameObject parent, bool state)
+    {
+        foreach (Transform child in parent.transform)
+        {
+            child.gameObject.SetActive(state);
+        }
     }
 }
