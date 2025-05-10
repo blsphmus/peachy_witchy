@@ -1,82 +1,100 @@
-п»їusing UnityEngine;
+<<<<<<< Updated upstream
+using UnityEngine;
+using System.Collections;
 
 public class MushroomSpawner : MonoBehaviour
 {
-    public GameObject[] mushroomPrefabs; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-    public Transform[] spawnPoints; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-    public float spawnInterval = 2f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    public string mushroomTag = "Mushroom"; // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-    public float minScale = 1f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    public float maxScale = 1f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    public float spawnRadius = 0.5f; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    public GameObject[] mushroomPrefabs; // Массив префабов грибов
+    public Transform[] spawnPoints;     // Массив точек появления
+    public float spawnInterval = 10f;   // Интервал между появлениями
 
     private void Start()
     {
-        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+        // Начинаем спавн грибов
+        StartCoroutine(SpawnMushroomsRoutine());
+=======
+п»їusing System;
+using UnityEngine;
+
+public class MushroomSpawner : MonoBehaviour
+{
+    public GameObject[] mushroomPrefabs;
+    public Transform[] spawnPoints;
+    public float spawnInterval = 2f;
+    public string[] mushroomTags = { "Plant1", "Plant2", "Plant3", "Plant4", "Plant5" };
+    public float minScale = 1f;
+    public float maxScale = 1f;
+    public float spawnRadius = 0.5f;
+
+    private void Start()
+    {
         StartCoroutine(SpawnMushrooms());
+>>>>>>> Stashed changes
     }
 
-    private System.Collections.IEnumerator SpawnMushrooms()
+    private IEnumerator SpawnMushroomsRoutine()
     {
-        while (true)
+        while (true) // Бесконечный цикл
         {
-            SpawnMushroom();
             yield return new WaitForSeconds(spawnInterval);
+
+            // Выбираем случайный гриб и случайную точку
+            GameObject randomMushroom = mushroomPrefabs[Random.Range(0, mushroomPrefabs.Length)];
+            Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+
+            // Создаём гриб на сцене
+            Instantiate(randomMushroom, randomSpawnPoint.position, randomSpawnPoint.rotation);
         }
     }
+<<<<<<< Updated upstream
+}
+=======
 
     private void SpawnMushroom()
-    {
-        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    {  
         bool mushroomSpawned = false;
 
-        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            Transform spawnPoint = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
 
-            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             Collider[] colliders = Physics.OverlapSphere(spawnPoint.position, spawnRadius);
             bool isOccupied = false;
 
             foreach (var collider in colliders)
             {
-                if (collider.CompareTag(mushroomTag))
+                // РџСЂРѕРІРµСЂСЏРµРј РІСЃРµ С‚РµРіРё РёР· РјР°СЃСЃРёРІР°
+                foreach (string tag in mushroomTags)
                 {
-                    // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-                    isOccupied = true;
-                    break;
+                    if (collider.CompareTag(tag))
+                    {
+                        isOccupied = true;
+                        break;
+                    }
                 }
+
+                if (isOccupied) break;
             }
 
-            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             if (!isOccupied)
             {
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-                GameObject mushroomPrefab = mushroomPrefabs[Random.Range(0, mushroomPrefabs.Length)];
-
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ -90 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ X
+                GameObject mushroomPrefab = mushroomPrefabs[UnityEngine.Random.Range(0, mushroomPrefabs.Length)];
                 Quaternion rotation = Quaternion.Euler(-90, 0, 0);
                 GameObject mushroom = Instantiate(mushroomPrefab, spawnPoint.position, rotation);
 
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-                float randomScale = Random.Range(minScale, maxScale);
-                Vector3 uniformScale = new Vector3(randomScale, randomScale, randomScale);
+                float randomScale = UnityEngine.Random.Range(minScale, maxScale);
+                mushroom.transform.localScale = Vector3.one * randomScale;
 
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
-                mushroom.transform.localScale = uniformScale;
-
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 mushroomSpawned = true;
-                break; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                break;
             }
         }
 
-        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-        if (!mushroomSpawned)
-        {
-            Debug.Log("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.");
-        }
     }
+
+    //if (!mushroomSpawned)
+    //{
+    //    Debug.Log("   ,   .");
+    //}
 }
+>>>>>>> Stashed changes

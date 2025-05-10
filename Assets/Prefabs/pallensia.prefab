@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5e3c3f6bd6b1ca740a7a8612a262715f, type: 3}
       propertyPath: m_TagString
-      value: Mushroom
+      value: Plant3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -129,6 +129,12 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 0}
   lineRenderLocation: {fileID: 0}
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+  rotationSpeed: 10
+  angularDamping: 0.85
 --- !u!65 &971481105862998014
 BoxCollider:
   m_ObjectHideFlags: 0

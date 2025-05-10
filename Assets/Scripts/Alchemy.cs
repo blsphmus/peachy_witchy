@@ -12,15 +12,13 @@ public class Alchemy : MonoBehaviour
     public float currentY;
 
     private Renderer _renderer;
-    
 
-    // Start is called before the first frame update
+
     void Start()
     {
         _renderer = Potion.GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Potion.SetActive(!isEmpty);
@@ -31,14 +29,22 @@ public class Alchemy : MonoBehaviour
     {
         if (isEmpty && other.CompareTag("Water"))
         {
-            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+<<<<<<< Updated upstream
+            // Получаем позицию эффекта как точку пересечения
             Vector3 collisionPoint = other.ClosestPoint(transform.position);
 
-            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            // Создаем эффект в точке контакта
             GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
             Destroy(effect, 1f);
 
-            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+            // Уничтожаем объект воды
+=======
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+>>>>>>> Stashed changes
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.2f, 0.3f, 0.9f);
@@ -80,9 +86,45 @@ public class Alchemy : MonoBehaviour
             Destroy(effect, 1f);
 
             Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.4f);
-            currentY += CheckPossibility(currentY, 0.5f);
-            _renderer.material.color += new Color(0.1f, 0.1f, 0.1f);
+            currentX += CheckPossibility(currentX, 0.1f);
+            currentY += CheckPossibility(currentY, 0.2f);
+            _renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant11"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.1f);
+            currentY += CheckPossibility(currentY, 0.2f);
+            _renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant12"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.1f);
+            currentY += CheckPossibility(currentY, 0.2f);
+            _renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant13"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.1f);
+            currentY += CheckPossibility(currentY, 0.2f);
+            _renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
         }
         else if (!isEmpty && other.CompareTag("Plant2"))
         {
@@ -92,76 +134,331 @@ public class Alchemy : MonoBehaviour
             Destroy(effect, 1f);
 
             Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, -0.7f);
-            currentY += CheckPossibility(currentY, -0.9f);
-            _renderer.material.color += new Color(-0.2f, -0.1f, 0.3f);
+            currentX += CheckPossibility(currentX, 0f);
+            currentY += CheckPossibility(currentY, -0.4f);
+            _renderer.material.color += new Color(0f, 0.1f, 0.2f);
         }
-        else if (!isEmpty && other.CompareTag("EmptyBottle"))
+        else if (!isEmpty && other.CompareTag("Plant21"))
         {
             Vector3 collisionPoint = other.ClosestPoint(transform.position);
 
             GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
             Destroy(effect, 1f);
 
-            ActivateChildren(other.gameObject, true);
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0f);
+            currentY += CheckPossibility(currentY, -0.4f);
+            _renderer.material.color += new Color(0f, 0.1f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant22"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
 
-            PotionCheck();
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0f);
+            currentY += CheckPossibility(currentY, -0.4f);
+            _renderer.material.color += new Color(0f, 0.1f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant23"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0f);
+            currentY += CheckPossibility(currentY, -0.4f);
+            _renderer.material.color += new Color(0f, 0.1f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant3"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, -0.1f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant31"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, -0.1f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant32"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, -0.1f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant33"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, -0.1f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant4"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.5f);
+            currentY += CheckPossibility(currentY, 0.5f);
+            _renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant41"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.5f);
+            currentY += CheckPossibility(currentY, 0.5f);
+            _renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant42"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.5f);
+            currentY += CheckPossibility(currentY, 0.5f);
+            _renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant43"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.5f);
+            currentY += CheckPossibility(currentY, 0.5f);
+            _renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant5"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.4f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant51"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.4f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant52"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.4f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant53"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.4f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant6"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.4f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant61"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.4f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant62"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.4f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("Plant63"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, 0.4f);
+            currentY += CheckPossibility(currentY, 0.3f);
+            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+        }
+        else if (!isEmpty && other.CompareTag("EmptyBottle"))
+        {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
+            Destroy(effect, 1f);
+
+            Color potionColor = PotionCheck(); // РџРѕР»СѓС‡Р°РµРј С†РІРµС‚
+            ActivateChildren(other.gameObject, true, potionColor); // РџРµСЂРµРґР°РµРј С†РІРµС‚
+
             isEmpty = true;
-
-            currentX = 0f; currentY = 0f;
+            currentX = 0f;
+            currentY = 0f;
         }
     }
 
-    void PotionCheck()
+    Color PotionCheck()
     {
         Color targetColor = Color.white;
 
-        if (currentY <= 0.5)
+        if (currentY <= 0.5f)
         {
-            if      (currentX >= 0 && currentX <= 0.2f) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+<<<<<<< Updated upstream
+            if      (currentX >= 0 && currentX <= 0.2f) // Левитация
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.2 && currentX <= 0.4) // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            else if (currentX > 0.2 && currentX <= 0.4) // Дождь в бутылке
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.4 && currentX <= 0.6) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            else if (currentX > 0.4 && currentX <= 0.6) // Смелость
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.6 && currentX <= 0.8) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            else if (currentX > 0.6 && currentX <= 0.8) // Очарование
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.8 && currentX <= 1) // пїЅпїЅпїЅпїЅ
+            else if (currentX > 0.8 && currentX <= 1) // Рост
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
         }
         else
         {
-            if (currentX >= 0 && currentX <= 0.2f) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            if (currentX >= 0 && currentX <= 0.2f) // Уменьшение
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.2 && currentX <= 0.4) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            else if (currentX > 0.2 && currentX <= 0.4) // Невидимость
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.4 && currentX <= 0.6) // пїЅпїЅпїЅ
+            else if (currentX > 0.4 && currentX <= 0.6) // Сон
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.6 && currentX <= 0.8) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            else if (currentX > 0.6 && currentX <= 0.8) // Вдохновение
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.8 && currentX <= 1) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            else if (currentX > 0.8 && currentX <= 1) // Пушистость
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
+=======
+            if (currentX >= 0f && currentX <= 0.2f)       // Р›РµРІРёС‚Р°С†РёСЏ
+                targetColor = new Color(0.65f, 0.8f, 0.8f);
+            else if (currentX > 0.2f && currentX <= 0.4f) // Р”РѕР¶РґСЊ
+                targetColor = new Color(0.2f, 0.3f, 0.75f);
+            else if (currentX > 0.4f && currentX <= 0.6f) // РЎРјРµР»РѕСЃС‚СЊ
+                targetColor = new Color(0.75f, 0.3f, 0.2f);
+            else if (currentX > 0.6f && currentX <= 0.8f) // РћС‡Р°СЂРѕРІР°РЅРёРµ
+                targetColor = new Color(1f, 0f, 0.55f);
+            else if (currentX > 0.8f && currentX <= 1f)   // Р РѕСЃС‚
+                targetColor = new Color(0f, 0.85f, 0f);
         }
+        else
+        {
+            if (currentX >= 0f && currentX <= 0.2f)       // РЈРјРµРЅСЊС€РµРЅРёРµ
+                targetColor = new Color(0.4f, 0f, 0.9f);
+            else if (currentX > 0.2f && currentX <= 0.4f) // РќРµРІРёРґРёРјРѕСЃС‚СЊ
+                targetColor = new Color(0.8f, 0.7f, 0.8f);
+            else if (currentX > 0.4f && currentX <= 0.6f) // РЎРѕРЅ
+                targetColor = new Color(0f, 0.2f, 0.4f);
+            else if (currentX > 0.6f && currentX <= 0.8f) // Р’РґРѕС…РЅРѕРІРµРЅРёРµ
+                targetColor = new Color(0.9f, 0.8f, 0f);
+            else if (currentX > 0.8f && currentX <= 1f)   // РџСѓС€РёСЃС‚РѕСЃС‚СЊ
+                targetColor = new Color(0.9f, 0.5f, 0.4f);
+>>>>>>> Stashed changes
+        }
+
+        return targetColor;
     }
 
 
@@ -181,11 +478,23 @@ public class Alchemy : MonoBehaviour
         }
     }
 
-    void ActivateChildren(GameObject parent, bool state)
+    void ActivateChildren(GameObject parent, bool state, Color color)
     {
+        // РџРѕР»СѓС‡Р°РµРј Property ID РґР»СЏ СЃРІРѕР№СЃС‚РІ С€РµР№РґРµСЂР°
+        int colorFrontID = Shader.PropertyToID("_ColorFront");
+        int colorBackID = Shader.PropertyToID("_ColorBack");
+
         foreach (Transform child in parent.transform)
         {
             child.gameObject.SetActive(state);
+
+            Renderer childRenderer = child.GetComponent<Renderer>();
+            if (childRenderer != null && childRenderer.material != null)
+            {
+                // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С†РІРµС‚Р° С‡РµСЂРµР· СЃРІРѕР№СЃС‚РІР° РјР°С‚РµСЂРёР°Р»Р°
+                childRenderer.material.SetColor(colorFrontID, color);
+                childRenderer.material.SetColor(colorBackID, color - new Color(0f, 0.3f, 0.3f));
+            }
         }
     }
 }
