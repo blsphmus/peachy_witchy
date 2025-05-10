@@ -73,6 +73,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 52ef068c9b3bd404ebb56e4f744e81cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4340307212869082678}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 52ef068c9b3bd404ebb56e4f744e81cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -907929655104104763}
   m_SourcePrefab: {fileID: 100100000, guid: 52ef068c9b3bd404ebb56e4f744e81cc, type: 3}
 --- !u!1 &869488392547548394 stripped
 GameObject:
@@ -150,3 +153,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.017318968, y: 0.01687882, z: 0.017007891}
   m_Center: {x: 0.0021511728, y: 0.0011969842, z: 0.008503946}
+--- !u!114 &-907929655104104763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869488392547548394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e89efa5b5968a40ba6c04cba1b9cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DustMushroomPrefabs:
+  - {fileID: 6111935535758969837, guid: dd60d50b7f4ebf64fa7b3f36d51288eb, type: 3}
+  explosionForce: 5
+  explosionRadius: 2

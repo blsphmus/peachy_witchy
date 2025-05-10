@@ -73,6 +73,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e3c3f6bd6b1ca740a7a8612a262715f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 971481105862998014}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e3c3f6bd6b1ca740a7a8612a262715f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1254231974116391802}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e3c3f6bd6b1ca740a7a8612a262715f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1882757618099320362}
   m_SourcePrefab: {fileID: 100100000, guid: 5e3c3f6bd6b1ca740a7a8612a262715f, type: 3}
 --- !u!1 &4706181560647601462 stripped
 GameObject:
@@ -144,3 +150,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.032426734, y: 0.03235049, z: 0.007696481}
   m_Center: {x: 0.000016696751, y: 0.000006889923, z: 0.0037527515}
+--- !u!114 &1254231974116391802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706181560647601462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f480e8d7cb51ea44ab364cc0f94db1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slicedMushroomPrefabs:
+  - {fileID: 5976853998027580788, guid: bc5e14a0865292548bf534db7404fdb8, type: 3}
+  - {fileID: 5319131039824729425, guid: f655443b4b895394e9326fc461c835aa, type: 3}
+  explosionForce: 5
+  explosionRadius: 2
+--- !u!114 &-1882757618099320362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706181560647601462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e89efa5b5968a40ba6c04cba1b9cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DustMushroomPrefabs:
+  - {fileID: 6111935535758969837, guid: dd60d50b7f4ebf64fa7b3f36d51288eb, type: 3}
+  explosionForce: 5
+  explosionRadius: 2

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9178819003511304278
+--- !u!1001 &306415457934072416
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,63 +8,63 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalScale.x
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalScale.y
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalScale.z
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.2491283
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.2135887
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071067
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: 919132149155446097, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_Name
-      value: shroom_notorious_hat
+      value: helixia_stalk (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - target: {fileID: 919132149155446097, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
@@ -72,28 +72,28 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3764612591590605652}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+      addedObject: {fileID: 6258316371909152707}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5134084507921314504}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
+      addedObject: {fileID: 7476139908790281298}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5565274192197409716}
-  m_SourcePrefab: {fileID: 100100000, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
---- !u!1 &8331904026965200135 stripped
+      addedObject: {fileID: -3207067981779395879}
+  m_SourcePrefab: {fileID: 100100000, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
+--- !u!1 &613038126970201905 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: eefd10731597e7f47ac62a96eb7b9e52, type: 3}
-  m_PrefabInstance: {fileID: 9178819003511304278}
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 44c7ac00821228a448b9629f294f5693, type: 3}
+  m_PrefabInstance: {fileID: 306415457934072416}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &3764612591590605652
+--- !u!54 &6258316371909152707
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8331904026965200135}
+  m_GameObject: {fileID: 613038126970201905}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -114,13 +114,13 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &5134084507921314504
+--- !u!114 &7476139908790281298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8331904026965200135}
+  m_GameObject: {fileID: 613038126970201905}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a536a7860ecaa14ebb2f566e0e638b6, type: 3}
@@ -135,15 +135,15 @@ MonoBehaviour:
   minDepth: 5
   maxDepth: 15
   rotationAxis: {x: 0, y: 1, z: 0}
-  rotationSpeed: 5
+  rotationSpeed: 10
   angularDamping: 0.85
---- !u!65 &5565274192197409716
+--- !u!65 &-3207067981779395879
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8331904026965200135}
+  m_GameObject: {fileID: 613038126970201905}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -156,5 +156,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0077216914, y: 0.00887372, z: 0.0073716645}
-  m_Center: {x: -0.00013044558, y: 0.00052967214, z: 0.0037163037}
+  m_Size: {x: 0.022829182, y: 0.023378953, z: 0.0027167602}
+  m_Center: {x: 0.0014865273, y: -0.0017888906, z: 0.0012379265}
