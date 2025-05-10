@@ -123,12 +123,6 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 0}
   lineRenderLocation: {fileID: 0}
-  scrollSpeed: 0.5
-  minDepth: 5
-  maxDepth: 15
-  rotationAxis: {x: 0, y: 1, z: 0}
-  rotationSpeed: 10
-  angularDamping: 0.85
 --- !u!65 &971481105862998014
 BoxCollider:
   m_ObjectHideFlags: 0

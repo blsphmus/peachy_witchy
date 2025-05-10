@@ -26,7 +26,6 @@ public class DragRigidbody : MonoBehaviour
     private Vector3 previousMousePosition;
 
     void Awake()
-
     {
         // ����� LineRendererLocation �� ��������� ������� Player
         GameObject player = GameObject.Find("Player");
@@ -135,7 +134,10 @@ public class DragRigidbody : MonoBehaviour
     public void HandleInputEnd(Vector3 screenPosition)
     {
         DestroyRope();
-        Destroy(jointTrans.gameObject);
+        if (jointTrans != null)
+        {
+            Destroy(jointTrans.gameObject);
+        }
     }
 
     Transform AttachJoint(Rigidbody rb, Vector3 attachmentPosition)
@@ -175,7 +177,7 @@ public class DragRigidbody : MonoBehaviour
     {
         if (jointTrans == null || lr == null || lineRenderLocation == null) return;
         lr.SetPosition(0, lineRenderLocation.position);
-        lr.SetPosition(1, this.transform.position);
+        lr.SetPosition(1, jointTrans.position);
     }
 
     private void DestroyRope()
