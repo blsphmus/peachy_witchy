@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -13,21 +14,22 @@ public class DragRigidbody : MonoBehaviour
     Transform jointTrans;
     float dragDepth;
 
-    // Новые переменные для управления приближением/отдалением
-    public float scrollSpeed = 0.5f;  // Скорость изменения расстояния
-    public float minDepth = 5.0f;     // Минимальное расстояние от камеры
-    public float maxDepth = 15.0f;   // Максимальное расстояние от камеры
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public float scrollSpeed = 0.5f;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public float minDepth = 5.0f;     // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    public float maxDepth = 15.0f;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
     [Header("Rotation Settings")]
-    public Vector3 rotationAxis = Vector3.up; // Ось вращения (локальная)
-    public float rotationSpeed = 10f;        // Скорость вращения
+    public Vector3 rotationAxis = Vector3.up; // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+    public float rotationSpeed = 10f;        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public float angularDamping = 0.85f;
 
     private Vector3 previousMousePosition;
 
     void Awake()
+
     {
-        // Поиск LineRendererLocation от корневого объекта Player
+        // пїЅпїЅпїЅпїЅпїЅ LineRendererLocation пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Player
         GameObject player = GameObject.Find("Player");
         if (player != null)
         {
@@ -42,7 +44,7 @@ public class DragRigidbody : MonoBehaviour
                     {
                         lineRenderLocation = foundLocation;
 
-                        // Попытка найти LineRenderer на объекте или его детях
+                        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ LineRenderer пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                         LineRenderer foundLR = foundLocation.GetComponent<LineRenderer>();
                         if (foundLR == null)
                         {
@@ -55,27 +57,27 @@ public class DragRigidbody : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogWarning("LineRenderer не найден на объекте LineRendererLocation или его детях");
+                            Debug.LogWarning("LineRenderer пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ LineRendererLocation пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
                         }
                     }
                     else
                     {
-                        Debug.LogWarning("LineRendererLocation не найден в wand");
+                        Debug.LogWarning("LineRendererLocation пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ wand");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning("wand не найден в Main Camera");
+                    Debug.LogWarning("wand пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ Main Camera");
                 }
             }
             else
             {
-                Debug.LogWarning("Main Camera не найдена в Player");
+                Debug.LogWarning("Main Camera пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ Player");
             }
         }
         else
         {
-            Debug.LogWarning("Player не найден в сцене");
+            Debug.LogWarning("Player пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ");
         }
     }
 
@@ -85,14 +87,14 @@ public class DragRigidbody : MonoBehaviour
         {
             Rigidbody connectedRb = jointTrans.GetComponent<ConfigurableJoint>().connectedBody;
 
-            // Применяем постоянное вращение
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             Vector3 torque = connectedRb.transform.TransformDirection(rotationAxis)
                             * rotationSpeed
                             * Time.fixedDeltaTime;
 
             connectedRb.AddTorque(torque, ForceMode.VelocityChange);
 
-            // Плавное затухание вращения
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             connectedRb.angularVelocity *= angularDamping;
         }
     }
@@ -123,7 +125,7 @@ public class DragRigidbody : MonoBehaviour
     {
         if (jointTrans == null) return;
 
-        // Обновляем позицию с учетом прокрутки
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         dragDepth -= Input.mouseScrollDelta.y * scrollSpeed;
         dragDepth = Mathf.Clamp(dragDepth, minDepth, maxDepth);
         jointTrans.position = CameraPlane.ScreenToWorldPlanePoint(Camera.main, dragDepth, screenPosition);
@@ -153,12 +155,12 @@ public class DragRigidbody : MonoBehaviour
         joint.connectedBody = rb;
         joint.configuredInWorldSpace = true;
 
-        // Разрешаем свободное вращение во всех осях
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         joint.angularXMotion = ConfigurableJointMotion.Free;
         joint.angularYMotion = ConfigurableJointMotion.Free;
         joint.angularZMotion = ConfigurableJointMotion.Free;
 
-        // Настройка линейных ограничений
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         JointDrive drive = new JointDrive
         {
             positionSpring = force,

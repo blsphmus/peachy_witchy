@@ -16,6 +16,8 @@ public class PlayerLook : MonoBehaviour
 
     void Update()
     {
+        if (!enabled) return; // Блокировка обновления если скрипт выключен
+
         Vector2 MouseInput = new Vector2
         {
             x = Input.GetAxis("Mouse X"),
@@ -29,5 +31,12 @@ public class PlayerLook : MonoBehaviour
 
         transform.eulerAngles = new Vector3(0f, XYRotation.y, 0f);
         PlayerCamera.localEulerAngles = new Vector3(XYRotation.x, 0f, 0f);
+    }
+
+    void OnDestroy()
+    {
+        // Восстановить курсор при уничтожении объекта
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
