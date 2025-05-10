@@ -410,6 +410,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!65 &62889680
@@ -559,6 +566,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!54 &108359030
@@ -1183,6 +1197,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!65 &614896837
@@ -1881,6 +1902,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!65 &937714511
@@ -2520,7 +2548,51 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream
 --- !u!4 &1342364628
+=======
+--- !u!114 &1348239408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348239407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e983bd5a79f25468cc6c30fe875fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mushroomPrefabs:
+  - {fileID: 869488392547548394, guid: 5aa5e65fb4605f241afb74bf75a33d98, type: 3}
+  - {fileID: 8414485045162113282, guid: d93435dee22b19745832e1178601ce5f, type: 3}
+  - {fileID: 4706181560647601462, guid: e1c823d033bec894d952d75faac992d5, type: 3}
+  - {fileID: 2361108796294518496, guid: e4b164ff09b83f24cb5e0a814ce88254, type: 3}
+  - {fileID: 4032686724470023849, guid: d352f46b426ebc54ab9dc30c4b7d9013, type: 3}
+  - {fileID: 7444107224411986894, guid: 95a45381a02a1dd43ace0d36d4d275b7, type: 3}
+  spawnPoints:
+  - {fileID: 1347334621}
+  - {fileID: 1484331607}
+  - {fileID: 955084626}
+  - {fileID: 666694289}
+  - {fileID: 843534107}
+  - {fileID: 1136948749}
+  - {fileID: 355553266}
+  - {fileID: 637955352}
+  - {fileID: 749452094}
+  - {fileID: 2116358356}
+  spawnInterval: 1
+  mushroomTags:
+  - Plant1
+  - Plant2
+  - Plant3
+  - Plant4
+  - Plant5
+  minScale: 20
+  maxScale: 50
+  spawnRadius: 0.5
+--- !u!4 &1348239410
+>>>>>>> Stashed changes
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3407,6 +3479,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!65 &1833089879
@@ -3559,8 +3638,8 @@ Transform:
   m_GameObject: {fileID: 1920285907}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0023}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3191944466568791774}
@@ -3614,8 +3693,13 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920285907}
+<<<<<<< Updated upstream
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1960072319
+=======
+  m_Mesh: {fileID: 388021458862765965, guid: 13e3e483ee43a2c4d98beebe88389bdf, type: 3}
+--- !u!1 &1989137273
+>>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3942,6 +4026,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!65 &2017006160
@@ -4200,6 +4291,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!65 &2146680071
@@ -5079,7 +5177,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.022, y: 0.022, z: 0.022}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5298,6 +5396,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!4 &7096402182687505050
@@ -5443,6 +5548,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!1 &7400136819316946498
@@ -5694,6 +5806,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!54 &7774818896767749115
@@ -5790,6 +5909,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!54 &8101065391422061824
@@ -6071,6 +6197,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!1 &8359633132586571369
@@ -6204,6 +6337,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!64 &8548200323668385730
@@ -6314,6 +6454,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!64 &8676126395034239059
@@ -6371,6 +6518,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!54 &8831657457347530851

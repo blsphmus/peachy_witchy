@@ -13,11 +13,34 @@ TagManager:
   - Plant4
   - Plant5
   - EmptyBottle
+<<<<<<< Updated upstream
   - Plant6
   - Plant7
   - Plant8
   - Plant9
   - Plant10
+=======
+  - CuttingBoard
+  - Plant51
+  - Plant52
+  - Plant6
+  - Plant11
+  - Plant12
+  - Plant13
+  - Plant21
+  - Plant22
+  - Plant23
+  - Plant31
+  - Plant32
+  - Plant33
+  - Plant41
+  - Plant42
+  - Plant43
+  - Plant53
+  - Plant61
+  - Plant62
+  - Plant63
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

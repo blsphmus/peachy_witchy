@@ -14,6 +14,14 @@ public class DragRigidbody : MonoBehaviour
     Transform jointTrans;
     float dragDepth;
 
+<<<<<<< Updated upstream
+=======
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public float scrollSpeed = 0.5f;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public float minDepth = 1.0f;     // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    public float maxDepth = 15.0f;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+
+>>>>>>> Stashed changes
     [Header("Rotation Settings")]
     public float rotationSpeed = 5f;
     private bool isRotating; // Флаг режима вращения
@@ -25,7 +33,60 @@ public class DragRigidbody : MonoBehaviour
 
     void OnMouseDown()
     {
+<<<<<<< Updated upstream
         HandleInputBegin(Input.mousePosition);
+=======
+        // пїЅпїЅпїЅпїЅпїЅ LineRendererLocation пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ Player
+        GameObject player = GameObject.Find("Player");
+        if (player != null)
+        {
+            Transform mainCamera = player.transform.Find("Main Camera");
+            if (mainCamera != null)
+            {
+                Transform wand = mainCamera.Find("wand");
+                if (wand != null)
+                {
+                    Transform foundLocation = wand.Find("LineRendererLocation");
+                    if (foundLocation != null)
+                    {
+                        lineRenderLocation = foundLocation;
+
+                        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ LineRenderer пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+                        LineRenderer foundLR = foundLocation.GetComponent<LineRenderer>();
+                        if (foundLR == null)
+                        {
+                            foundLR = foundLocation.GetComponentInChildren<LineRenderer>();
+                        }
+
+                        if (foundLR != null)
+                        {
+                            lr = foundLR;
+                        }
+                        //else
+                        //{
+                        //    Debug.LogWarning("LineRenderer пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ LineRendererLocation пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ");
+                        //}
+                    }
+                    //else
+                    //{
+                    //    Debug.LogWarning("LineRendererLocation пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ wand");
+                    //}
+                }
+                //else
+                //{
+                //    Debug.LogWarning("wand пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ Main Camera");
+                //}
+            }
+            //else
+            //{
+            //    Debug.LogWarning("Main Camera пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ Player");
+            //}
+        }
+        //else
+        //{
+        //    Debug.LogWarning("Player пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ");
+        //}
+>>>>>>> Stashed changes
     }
 
     void OnMouseUp()
