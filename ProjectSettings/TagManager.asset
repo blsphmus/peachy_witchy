@@ -19,6 +19,7 @@ TagManager:
   - Plant8
   - Plant9
   - Plant10
+  - CuttingBoard
   layers:
   - Default
   - TransparentFX

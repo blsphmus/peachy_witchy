@@ -31,14 +31,14 @@ public class Alchemy : MonoBehaviour
     {
         if (isEmpty && other.CompareTag("Water"))
         {
-            // Получаем позицию эффекта как точку пересечения
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             Vector3 collisionPoint = other.ClosestPoint(transform.position);
 
-            // Создаем эффект в точке контакта
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
             Destroy(effect, 1f);
 
-            // Уничтожаем объект воды
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.2f, 0.3f, 0.9f);
@@ -118,46 +118,46 @@ public class Alchemy : MonoBehaviour
 
         if (currentY <= 0.5)
         {
-            if      (currentX >= 0 && currentX <= 0.2f) // Левитация
+            if      (currentX >= 0 && currentX <= 0.2f) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.2 && currentX <= 0.4) // Дождь в бутылке
+            else if (currentX > 0.2 && currentX <= 0.4) // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.4 && currentX <= 0.6) // Смелость
+            else if (currentX > 0.4 && currentX <= 0.6) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.6 && currentX <= 0.8) // Очарование
+            else if (currentX > 0.6 && currentX <= 0.8) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.8 && currentX <= 1) // Рост
+            else if (currentX > 0.8 && currentX <= 1) // пїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
         }
         else
         {
-            if (currentX >= 0 && currentX <= 0.2f) // Уменьшение
+            if (currentX >= 0 && currentX <= 0.2f) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.2 && currentX <= 0.4) // Невидимость
+            else if (currentX > 0.2 && currentX <= 0.4) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.4 && currentX <= 0.6) // Сон
+            else if (currentX > 0.4 && currentX <= 0.6) // пїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.6 && currentX <= 0.8) // Вдохновение
+            else if (currentX > 0.6 && currentX <= 0.8) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }
-            else if (currentX > 0.8 && currentX <= 1) // Пушистость
+            else if (currentX > 0.8 && currentX <= 1) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.6f, 0.1f);
             }

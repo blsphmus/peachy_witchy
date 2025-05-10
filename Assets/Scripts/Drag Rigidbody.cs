@@ -136,10 +136,7 @@ public class DragRigidbody : MonoBehaviour
     public void HandleInputEnd(Vector3 screenPosition)
     {
         DestroyRope();
-        if (jointTrans != null)
-        {
-            Destroy(jointTrans.gameObject);
-        }
+        Destroy(jointTrans.gameObject);
     }
 
     Transform AttachJoint(Rigidbody rb, Vector3 attachmentPosition)
@@ -179,7 +176,7 @@ public class DragRigidbody : MonoBehaviour
     {
         if (jointTrans == null || lr == null || lineRenderLocation == null) return;
         lr.SetPosition(0, lineRenderLocation.position);
-        lr.SetPosition(1, jointTrans.position);
+        lr.SetPosition(1, this.transform.position);
     }
 
     private void DestroyRope()
