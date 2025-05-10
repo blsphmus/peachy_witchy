@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -13,59 +14,14 @@ public class DragRigidbody : MonoBehaviour
     Transform jointTrans;
     float dragDepth;
 
-    void Awake()
-    {
-        // Поиск LineRendererLocation по указанному пути
-        GameObject player = GameObject.Find("Player");
-        if (player != null)
-        {
-            Transform mainCamera = player.transform.Find("Main Camera");
-            if (mainCamera != null)
-            {
-                Transform wand = mainCamera.Find("wand");
-                if (wand != null)
-                {
-                    Transform foundLocation = wand.Find("LineRendererLocation");
-                    if (foundLocation != null)
-                    {
-                        lineRenderLocation = foundLocation;
+    [Header("Rotation Settings")]
+    public float rotationSpeed = 5f;
+    private bool isRotating; // Флаг режима вращения
+    private Vector3 lastMousePosition;
 
-                        // Попробуем также найти LineRenderer на этом объекте или его дочерних объектах
-                        LineRenderer foundLR = foundLocation.GetComponent<LineRenderer>();
-                        if (foundLR == null)
-                        {
-                            foundLR = foundLocation.GetComponentInChildren<LineRenderer>();
-                        }
+    [Header("References")]
+    public PlayerLook playerLook;
 
-                        if (foundLR != null)
-                        {
-                            lr = foundLR;
-                        }
-                        else
-                        {
-                            Debug.LogWarning("LineRenderer не найден на объекте LineRendererLocation или его дочерних объектах");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("LineRendererLocation не найден в wand");
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning("wand не найден в Main Camera");
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Main Camera не найден в Player");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Player не найден в сцене");
-        }
-    }
 
     void OnMouseDown()
     {
@@ -95,10 +51,7 @@ public class DragRigidbody : MonoBehaviour
             }
         }
 
-        if (lr != null)
-        {
-            lr.positionCount = 2;
-        }
+        lr.positionCount = 2;
     }
 
     public void HandleInput(Vector3 screenPosition)
@@ -114,10 +67,7 @@ public class DragRigidbody : MonoBehaviour
     public void HandleInputEnd(Vector3 screenPosition)
     {
         DestroyRope();
-        if (jointTrans != null)
-        {
-            Destroy(jointTrans.gameObject);
-        }
+        Destroy(jointTrans.gameObject);
     }
 
     Transform AttachJoint(Rigidbody rb, Vector3 attachmentPosition)
@@ -157,20 +107,83 @@ public class DragRigidbody : MonoBehaviour
 
     private void DrawRope()
     {
-        if (jointTrans == null || lr == null || lineRenderLocation == null)
+        if (jointTrans == null)
         {
             return;
         }
 
         lr.SetPosition(0, lineRenderLocation.position);
-        lr.SetPosition(1, jointTrans.position);
+        lr.SetPosition(1, this.transform.position);
     }
 
     private void DestroyRope()
     {
-        if (lr != null)
+        lr.positionCount = 0;
+    }
+
+    void Update()
+    {
+        if (isRotating)
         {
-            lr.positionCount = 0;
+            HandleRotation();
         }
+    }
+
+    void OnMouseOver()
+    {
+        if (jointTrans == null) return; // Добавить проверку
+
+        if (Input.GetMouseButtonDown(1)) // Убрать лишнюю проверку
+        {
+            StartRotation();
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            StopRotation();
+        }
+    }
+
+    void StartRotation()
+    {
+        if (playerLook == null) // Проверка
+        {
+            //Debug.LogError("PlayerLook не назначен в инспекторе!");
+            return;
+        }
+
+        isRotating = true;
+        lastMousePosition = Input.mousePosition;
+
+        playerLook.enabled = false; // Используем публичную ссылку
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    void StopRotation()
+    {
+        if (playerLook == null) // Проверка
+        {
+            //Debug.LogError("PlayerLook не назначен в инспекторе!");
+            return;
+        }
+
+        isRotating = false;
+
+        playerLook.enabled = true; // Используем публичную ссылку
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void HandleRotation()
+    {
+        Vector3 delta = Input.mousePosition - lastMousePosition;
+        lastMousePosition = Input.mousePosition;
+
+        // Вращаем объект
+        float rotationX = delta.x * rotationSpeed * Time.deltaTime;
+        float rotationY = delta.y * rotationSpeed * Time.deltaTime;
+
+        jointTrans.Rotate(Camera.main.transform.up, -rotationX, Space.World);
+        jointTrans.Rotate(Camera.main.transform.right, rotationY, Space.World);
     }
 }
