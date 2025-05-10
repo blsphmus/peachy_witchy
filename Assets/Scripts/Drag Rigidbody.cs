@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -12,6 +13,15 @@ public class DragRigidbody : MonoBehaviour
 
     Transform jointTrans;
     float dragDepth;
+
+    [Header("Rotation Settings")]
+    public float rotationSpeed = 5f;
+    private bool isRotating; // Флаг режима вращения
+    private Vector3 lastMousePosition;
+
+    [Header("References")]
+    public PlayerLook playerLook;
+
 
     void OnMouseDown()
     {
@@ -109,5 +119,71 @@ public class DragRigidbody : MonoBehaviour
     private void DestroyRope()
     {
         lr.positionCount = 0;
+    }
+
+    void Update()
+    {
+        if (isRotating)
+        {
+            HandleRotation();
+        }
+    }
+
+    void OnMouseOver()
+    {
+        if (jointTrans == null) return; // Добавить проверку
+
+        if (Input.GetMouseButtonDown(1)) // Убрать лишнюю проверку
+        {
+            StartRotation();
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            StopRotation();
+        }
+    }
+
+    void StartRotation()
+    {
+        if (playerLook == null) // Проверка
+        {
+            //Debug.LogError("PlayerLook не назначен в инспекторе!");
+            return;
+        }
+
+        isRotating = true;
+        lastMousePosition = Input.mousePosition;
+
+        playerLook.enabled = false; // Используем публичную ссылку
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    void StopRotation()
+    {
+        if (playerLook == null) // Проверка
+        {
+            //Debug.LogError("PlayerLook не назначен в инспекторе!");
+            return;
+        }
+
+        isRotating = false;
+
+        playerLook.enabled = true; // Используем публичную ссылку
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void HandleRotation()
+    {
+        Vector3 delta = Input.mousePosition - lastMousePosition;
+        lastMousePosition = Input.mousePosition;
+
+        // Вращаем объект
+        float rotationX = delta.x * rotationSpeed * Time.deltaTime;
+        float rotationY = delta.y * rotationSpeed * Time.deltaTime;
+
+        jointTrans.Rotate(Camera.main.transform.up, -rotationX, Space.World);
+        jointTrans.Rotate(Camera.main.transform.right, rotationY, Space.World);
     }
 }

@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!enabled) return; // Блокировка движения
+
         Vector3 PlayerInput = new Vector3
         {
             x = Input.GetAxisRaw("Horizontal"),

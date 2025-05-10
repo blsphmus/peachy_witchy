@@ -3,7 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Water
+  - Oil
+  - Wine
+  - Plant1
+  - Plant2
+  - Plant3
+  - Plant4
+  - Plant5
+  - EmptyBottle
+  - Plant6
+  - Plant7
+  - Plant8
+  - Plant9
+  - Plant10
   layers:
   - Default
   - TransparentFX
