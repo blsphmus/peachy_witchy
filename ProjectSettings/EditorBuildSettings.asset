@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/VASYA_MENU.unity
     guid: 1324bb37f1bda6040837a4a295bccb2e
   - enabled: 1
+    path: Assets/Scenes/Cutscene.unity
+    guid: 4fa90c31646cd7f4499104adeba428bf
+  - enabled: 1
     path: Assets/Scenes/alisa_delaet 1.unity
     guid: af2dfd1dedba4064f8b309c4f3f2c07b
   m_configObjects: {}
