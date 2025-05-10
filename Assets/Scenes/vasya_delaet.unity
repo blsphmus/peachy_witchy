@@ -572,7 +572,7 @@ Transform:
   - {fileID: 64981968}
   - {fileID: 462045050}
   - {fileID: 919234448}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1198551158}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &439961437
 GameObject:
@@ -1516,7 +1516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1050229639}
-  - component: {fileID: 1050229638}
+  - component: {fileID: 1050229640}
   m_Layer: 0
   m_Name: MushroomSpawner
   m_TagString: Untagged
@@ -1524,41 +1524,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1050229638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050229637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e983bd5a79f25468cc6c30fe875fd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mushroomPrefabs:
-  - {fileID: 2965096308350547001, guid: 54026185c6df9e64db4ef76dca6d787f, type: 3}
-  - {fileID: 5835651873694114390, guid: 2eb17e5563eb5ce42a261638413fbacf, type: 3}
-  spawnPoints:
-  - {fileID: 1325698035}
-  - {fileID: 525804779}
-  - {fileID: 1498259540}
-  - {fileID: 1699161639}
-  - {fileID: 439961438}
-  - {fileID: 1342364628}
-  - {fileID: 890320098}
-  - {fileID: 64981968}
-  - {fileID: 462045050}
-  - {fileID: 919234448}
-  spawnInterval: 1
-  collisionCheckRadius: 2
-  collisionCheckMask:
-    serializedVersion: 2
-    m_Bits: 64
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  targetScale: {x: 1, y: 1, z: 1}
 --- !u!4 &1050229639
 Transform:
   m_ObjectHideFlags: 0
@@ -1574,6 +1539,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1050229640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050229637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e983bd5a79f25468cc6c30fe875fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mushroomPrefabs:
+  - {fileID: 8414485045162113282, guid: d93435dee22b19745832e1178601ce5f, type: 3}
+  - {fileID: 4706181560647601462, guid: e1c823d033bec894d952d75faac992d5, type: 3}
+  - {fileID: 2361108796294518496, guid: e4b164ff09b83f24cb5e0a814ce88254, type: 3}
+  - {fileID: 4032686724470023849, guid: d352f46b426ebc54ab9dc30c4b7d9013, type: 3}
+  spawnPoints:
+  - {fileID: 1325698035}
+  - {fileID: 525804779}
+  - {fileID: 1498259540}
+  - {fileID: 1699161639}
+  - {fileID: 439961438}
+  - {fileID: 1342364628}
+  - {fileID: 890320098}
+  - {fileID: 64981968}
+  - {fileID: 462045050}
+  - {fileID: 919234448}
+  spawnInterval: 1
+  mushroomTag: Mushroom
+  minScale: 20
+  maxScale: 50
+  spawnRadius: 0.5
 --- !u!1 &1198551157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1602,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 321839651}
   m_Father: {fileID: 63904760}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &1198551159
@@ -2581,4 +2580,3 @@ SceneRoots:
   - {fileID: 618007447}
   - {fileID: 1866327837}
   - {fileID: 1050229639}
-  - {fileID: 321839651}

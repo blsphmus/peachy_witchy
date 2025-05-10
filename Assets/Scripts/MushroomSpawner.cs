@@ -1,81 +1,82 @@
 using UnityEngine;
-using System.Collections;
-using System.Linq;
 
 public class MushroomSpawner : MonoBehaviour
 {
-    [Header("Spawn Settings")]
-    public GameObject[] mushroomPrefabs;
-    public Transform[] spawnPoints;
-    public float spawnInterval = 10f;
-    public float collisionCheckRadius = 0.5f;
-    public LayerMask collisionCheckMask;
-    public LayerMask groundMask; // Добавляем маску для земли
-
-    [Header("Scale Settings")]
-    public Vector3 targetScale = Vector3.one;
+    public GameObject[] mushroomPrefabs; // Массив префабов грибов
+    public Transform[] spawnPoints; // Массив точек спавна
+    public float spawnInterval = 2f; // Интервал спавна в секундах
+    public string mushroomTag = "Mushroom"; // Тег для грибов
+    public float minScale = 1f; // Минимальный масштаб
+    public float maxScale = 1f; // Максимальный масштаб
+    public float spawnRadius = 0.5f; // Радиус проверки спавна
 
     private void Start()
     {
-        if (spawnPoints.Length == 0)
-            Debug.LogError("No spawn points assigned!");
-
-        if (mushroomPrefabs.Length == 0)
-            Debug.LogError("No mushroom prefabs assigned!");
-
-        StartCoroutine(SpawnRoutine());
+        // Запускаем корутину для спавна грибов
+        StartCoroutine(SpawnMushrooms());
     }
 
-    private IEnumerator SpawnRoutine()
+    private System.Collections.IEnumerator SpawnMushrooms()
     {
         while (true)
         {
+            SpawnMushroom();
             yield return new WaitForSeconds(spawnInterval);
-            TrySpawnMushroom();
         }
     }
 
-    private void TrySpawnMushroom()
+    private void SpawnMushroom()
     {
-        var freePoint = FindFreeSpawnPoint();
-        if (freePoint == null) return;
+        // Переменная для отслеживания, была ли найдена свободная точка
+        bool mushroomSpawned = false;
 
-        var prefab = mushroomPrefabs[Random.Range(0, mushroomPrefabs.Length)];
-        var instance = Instantiate(prefab, freePoint.position, Quaternion.identity); // Используем identity rotation
-
-        instance.transform.localScale = targetScale;
-        PositionAndAlignMushroom(instance.transform); // Переименовали метод
-    }
-
-    private void PositionAndAlignMushroom(Transform mushroom)
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(mushroom.position + Vector3.up * 2,
-                          Vector3.down,
-                          out hit,
-                          3f,
-                          groundMask))
+        // Попытка спавна гриба
+        for (int i = 0; i < spawnPoints.Length; i++)
         {
-            // Устанавливаем позицию
-            mushroom.position = hit.point;
+            // Выбираем случайную точку спавна
+            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-            // Выравниваем гриб по нормали поверхности
-            mushroom.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+            // Проверяем, есть ли гриб на точке спавна
+            Collider[] colliders = Physics.OverlapSphere(spawnPoint.position, spawnRadius);
+            bool isOccupied = false;
 
-            // Добавляем случайный поворот вокруг оси Y для естественности
-            mushroom.Rotate(Vector3.up, Random.Range(0f, 360f), Space.Self);
-        }
-    }
-
-    private Transform FindFreeSpawnPoint()
-    {
-        foreach (var point in spawnPoints.OrderBy(x => Random.value))
-        {
-            if (!Physics.CheckSphere(point.position, collisionCheckRadius, collisionCheckMask))
+            foreach (var collider in colliders)
             {
-                return point;
+                if (collider.CompareTag(mushroomTag))
+                {
+                    // Если гриб уже есть, помечаем точку как занятую
+                    isOccupied = true;
+                    break;
+                }
+            }
+
+            // Если точка свободна, спавним гриб
+            if (!isOccupied)
+            {
+                // Выбираем случайный префаб гриба
+                GameObject mushroomPrefab = mushroomPrefabs[Random.Range(0, mushroomPrefabs.Length)];
+
+                // Создаем гриб с поворотом на -90 градусов по оси X
+                Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+                GameObject mushroom = Instantiate(mushroomPrefab, spawnPoint.position, rotation);
+
+                // Генерируем случайный масштаб в заданных пределах
+                float randomScale = Random.Range(minScale, maxScale);
+                Vector3 uniformScale = new Vector3(randomScale, randomScale, randomScale);
+
+                // Применяем масштаб к грибу
+                mushroom.transform.localScale = uniformScale;
+
+                // Устанавливаем флаг, что гриб был успешно заспавнен
+                mushroomSpawned = true;
+                break; // Выходим из цикла, так как гриб успешно заспавнен
             }
         }
-        return null;
+
+        // Если гриб не был заспавнен, можно добавить логику для обработки этого случая
+        if (!mushroomSpawned)
+        {
+            Debug.Log("Не удалось заспавнить гриб, все точки заняты.");
+        }
     }
 }

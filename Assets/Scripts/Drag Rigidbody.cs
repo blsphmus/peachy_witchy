@@ -13,6 +13,60 @@ public class DragRigidbody : MonoBehaviour
     Transform jointTrans;
     float dragDepth;
 
+    void Awake()
+    {
+        // Поиск LineRendererLocation по указанному пути
+        GameObject player = GameObject.Find("Player");
+        if (player != null)
+        {
+            Transform mainCamera = player.transform.Find("Main Camera");
+            if (mainCamera != null)
+            {
+                Transform wand = mainCamera.Find("wand");
+                if (wand != null)
+                {
+                    Transform foundLocation = wand.Find("LineRendererLocation");
+                    if (foundLocation != null)
+                    {
+                        lineRenderLocation = foundLocation;
+
+                        // Попробуем также найти LineRenderer на этом объекте или его дочерних объектах
+                        LineRenderer foundLR = foundLocation.GetComponent<LineRenderer>();
+                        if (foundLR == null)
+                        {
+                            foundLR = foundLocation.GetComponentInChildren<LineRenderer>();
+                        }
+
+                        if (foundLR != null)
+                        {
+                            lr = foundLR;
+                        }
+                        else
+                        {
+                            Debug.LogWarning("LineRenderer не найден на объекте LineRendererLocation или его дочерних объектах");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("LineRendererLocation не найден в wand");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("wand не найден в Main Camera");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Main Camera не найден в Player");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player не найден в сцене");
+        }
+    }
+
     void OnMouseDown()
     {
         HandleInputBegin(Input.mousePosition);
@@ -41,7 +95,10 @@ public class DragRigidbody : MonoBehaviour
             }
         }
 
-        lr.positionCount = 2;
+        if (lr != null)
+        {
+            lr.positionCount = 2;
+        }
     }
 
     public void HandleInput(Vector3 screenPosition)
@@ -57,7 +114,10 @@ public class DragRigidbody : MonoBehaviour
     public void HandleInputEnd(Vector3 screenPosition)
     {
         DestroyRope();
-        Destroy(jointTrans.gameObject);
+        if (jointTrans != null)
+        {
+            Destroy(jointTrans.gameObject);
+        }
     }
 
     Transform AttachJoint(Rigidbody rb, Vector3 attachmentPosition)
@@ -97,17 +157,20 @@ public class DragRigidbody : MonoBehaviour
 
     private void DrawRope()
     {
-        if (jointTrans == null)
+        if (jointTrans == null || lr == null || lineRenderLocation == null)
         {
             return;
         }
 
         lr.SetPosition(0, lineRenderLocation.position);
-        lr.SetPosition(1, this.transform.position);
+        lr.SetPosition(1, jointTrans.position);
     }
 
     private void DestroyRope()
     {
-        lr.positionCount = 0;
+        if (lr != null)
+        {
+            lr.positionCount = 0;
+        }
     }
 }
