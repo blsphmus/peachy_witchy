@@ -80,9 +80,21 @@ PrefabInstance:
       addedObject: {fileID: 5684606902700555251}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 55a90aa725ea41b45a6770d0b43df741, type: 3}
       insertIndex: -1
+<<<<<<< Updated upstream
       addedObject: {fileID: 2979118997678709620}
   m_SourcePrefab: {fileID: 100100000, guid: 55a90aa725ea41b45a6770d0b43df741, type: 3}
 --- !u!1 &2021360142329010591 stripped
+=======
+      addedObject: {fileID: 4814661284994184670}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4f1e0ee073591ee4d98b0db6b4d313f8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2941804689586965793}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4f1e0ee073591ee4d98b0db6b4d313f8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8034182267775095681}
+  m_SourcePrefab: {fileID: 100100000, guid: 4f1e0ee073591ee4d98b0db6b4d313f8, type: 3}
+--- !u!1 &2361108796294518496 stripped
+>>>>>>> Stashed changes
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 55a90aa725ea41b45a6770d0b43df741, type: 3}
   m_PrefabInstance: {fileID: 1210405652286563534}
@@ -152,3 +164,66 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 0}
   lineRenderLocation: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 5
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+  rotationSpeed: 10
+  angularDamping: 0.85
+--- !u!65 &4814661284994184670
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361108796294518496}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020331394, y: 0.020331392, z: 0.026981397}
+  m_Center: {x: 0.0017313319, y: 0, z: 0.013925253}
+--- !u!114 &2941804689586965793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361108796294518496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f480e8d7cb51ea44ab364cc0f94db1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slicedMushroomPrefabs:
+  - {fileID: 1225754761400880890, guid: 72cb9cd02f2d81847b6eea8179dfdb76, type: 3}
+  - {fileID: 4106834004658656378, guid: a3bf339765e8fb74baa5d4cce99d674b, type: 3}
+  explosionForce: 5
+  explosionRadius: 2
+--- !u!114 &8034182267775095681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361108796294518496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e89efa5b5968a40ba6c04cba1b9cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DustMushroomPrefabs:
+  - {fileID: 6111935535758969837, guid: dd60d50b7f4ebf64fa7b3f36d51288eb, type: 3}
+  explosionForce: 5
+  explosionRadius: 2
+>>>>>>> Stashed changes

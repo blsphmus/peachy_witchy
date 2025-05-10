@@ -3465,7 +3465,11 @@ Transform:
   m_GameObject: {fileID: 7397341597744156624}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: 1.435}
+=======
+  m_LocalPosition: {x: -3.61, y: -0, z: 1.147}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3622,7 +3626,7 @@ Transform:
   m_GameObject: {fileID: 8483471211819499425}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.19, y: 0, z: 0.62}
+  m_LocalPosition: {x: -1.19, y: 0.431, z: 0.62}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3661,7 +3665,11 @@ Transform:
   m_GameObject: {fileID: 4018073160555751950}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: 1.717}
+=======
+  m_LocalPosition: {x: -3.712, y: 0, z: 1.388}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4216,6 +4224,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!23 &7362565920339820453
@@ -4306,7 +4321,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 2
 --- !u!65 &7397341597744156626
 BoxCollider:
@@ -4346,6 +4361,13 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 12154929}
   lineRenderLocation: {fileID: 12154928}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 2
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+>>>>>>> Stashed changes
   rotationSpeed: 5
   playerLook: {fileID: 0}
 --- !u!1 &7400136819316946498
@@ -4834,9 +4856,10 @@ GameObject:
   - component: {fileID: 8548200323668385727}
   - component: {fileID: 8548200323668385729}
   - component: {fileID: 8548200323668385730}
+  - component: {fileID: 8548200323668385731}
   m_Layer: 6
   m_Name: Mortar
-  m_TagString: Untagged
+  m_TagString: Mortar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4916,7 +4939,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 2
 --- !u!114 &8548200323668385729
 MonoBehaviour:
@@ -4959,6 +4982,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1749398012767899704, guid: 778089eb334f78e4682ccfb1760950f5, type: 3}
+--- !u!65 &8548200323668385731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483471211819499425}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.022599176, y: 0.022599181, z: 0.014213979}
+  m_Center: {x: 0.0000000013969839, y: 0.0000000013969842, z: -0.0028930127}
 --- !u!23 &8676126395034239055
 MeshRenderer:
   m_ObjectHideFlags: 0

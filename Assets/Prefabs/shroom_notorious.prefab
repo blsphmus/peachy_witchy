@@ -8,6 +8,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream
     - target: {fileID: -8679921383154817045, guid: 905c8df61e1fa924eaa98d3ef41ee9eb, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -21,6 +22,21 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 905c8df61e1fa924eaa98d3ef41ee9eb, type: 3}
+=======
+    - target: {fileID: -8679921383154817045, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_LocalPosition.x
       value: 602.94006
       objectReference: {fileID: 0}
@@ -80,9 +96,21 @@ PrefabInstance:
       addedObject: {fileID: 3207888553510256843}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 905c8df61e1fa924eaa98d3ef41ee9eb, type: 3}
       insertIndex: -1
+<<<<<<< Updated upstream
       addedObject: {fileID: 3657586867549112247}
   m_SourcePrefab: {fileID: 100100000, guid: 905c8df61e1fa924eaa98d3ef41ee9eb, type: 3}
 --- !u!1 &1335247728221723680 stripped
+=======
+      addedObject: {fileID: 3561790257744799038}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5972433318431820196}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1606746963290324737}
+  m_SourcePrefab: {fileID: 100100000, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
+--- !u!1 &4032686724470023849 stripped
+>>>>>>> Stashed changes
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 905c8df61e1fa924eaa98d3ef41ee9eb, type: 3}
   m_PrefabInstance: {fileID: 2181617342704820593}
@@ -152,3 +180,66 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 0}
   lineRenderLocation: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+  scrollSpeed: 0.5
+  minDepth: 5
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+  rotationSpeed: 10
+  angularDamping: 0.85
+--- !u!65 &3561790257744799038
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032686724470023849}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.007866789, y: 0.012300734, z: 0.016168747}
+  m_Center: {x: -0.000048914575, y: 0.0024421178, z: 0.008084374}
+--- !u!114 &5972433318431820196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032686724470023849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f480e8d7cb51ea44ab364cc0f94db1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slicedMushroomPrefabs:
+  - {fileID: 8331904026965200135, guid: 86f736bf08d700f489d0c5a6467e0228, type: 3}
+  - {fileID: 6653069892102894271, guid: a374cfb05fea1be4fbdc49d2283eae27, type: 3}
+  explosionForce: 5
+  explosionRadius: 2
+--- !u!114 &1606746963290324737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032686724470023849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e89efa5b5968a40ba6c04cba1b9cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DustMushroomPrefabs:
+  - {fileID: 6111935535758969837, guid: dd60d50b7f4ebf64fa7b3f36d51288eb, type: 3}
+  explosionForce: 5
+  explosionRadius: 2
+>>>>>>> Stashed changes
