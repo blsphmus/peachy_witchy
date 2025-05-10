@@ -73,6 +73,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3561790257744799038}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2059755925955770006}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3414579434090492249}
   m_SourcePrefab: {fileID: 100100000, guid: 236acb7d236e51741ba44ae931639e2a, type: 3}
 --- !u!1 &4032686724470023849 stripped
 GameObject:
@@ -123,6 +129,12 @@ MonoBehaviour:
   distance: 15
   lr: {fileID: 0}
   lineRenderLocation: {fileID: 0}
+  scrollSpeed: 0.5
+  minDepth: 5
+  maxDepth: 15
+  rotationAxis: {x: 0, y: 1, z: 0}
+  rotationSpeed: 10
+  angularDamping: 0.85
 --- !u!65 &3561790257744799038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -144,3 +156,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.007866789, y: 0.012300734, z: 0.016168747}
   m_Center: {x: -0.000048914575, y: 0.0024421178, z: 0.008084374}
+--- !u!114 &2059755925955770006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032686724470023849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e89efa5b5968a40ba6c04cba1b9cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DustMushroomPrefabs:
+  - {fileID: 6111935535758969837, guid: dd60d50b7f4ebf64fa7b3f36d51288eb, type: 3}
+  explosionForce: 5
+  explosionRadius: 2
+--- !u!114 &3414579434090492249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032686724470023849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f480e8d7cb51ea44ab364cc0f94db1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slicedMushroomPrefabs:
+  - {fileID: 8331904026965200135, guid: 86f736bf08d700f489d0c5a6467e0228, type: 3}
+  - {fileID: 6653069892102894271, guid: a374cfb05fea1be4fbdc49d2283eae27, type: 3}
+  explosionForce: 5
+  explosionRadius: 2
