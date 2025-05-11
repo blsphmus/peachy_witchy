@@ -77,7 +77,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.1f);
             currentY += CheckPossibility(currentY, 0.2f);
-            _renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+            //_renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant11"))
         {
@@ -89,7 +90,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.1f);
             currentY += CheckPossibility(currentY, 0.2f);
-            _renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+            //_renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant12"))
         {
@@ -101,7 +103,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.1f);
             currentY += CheckPossibility(currentY, 0.2f);
-            _renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+            //_renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant13"))
         {
@@ -113,7 +116,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.1f);
             currentY += CheckPossibility(currentY, 0.2f);
-            _renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+            //_renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant2"))
         {
@@ -125,7 +129,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0f);
             currentY += CheckPossibility(currentY, -0.4f);
-            _renderer.material.color += new Color(0f, 0.1f, 0.2f);
+            //_renderer.material.color += new Color(0f, 0.1f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant21"))
         {
@@ -137,7 +142,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0f);
             currentY += CheckPossibility(currentY, -0.4f);
-            _renderer.material.color += new Color(0f, 0.1f, 0.2f);
+            //_renderer.material.color += new Color(0f, 0.1f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant22"))
         {
@@ -149,7 +155,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0f);
             currentY += CheckPossibility(currentY, -0.4f);
-            _renderer.material.color += new Color(0f, 0.1f, 0.2f);
+            //_renderer.material.color += new Color(0f, 0.1f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant23"))
         {
@@ -161,7 +168,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0f);
             currentY += CheckPossibility(currentY, -0.4f);
-            _renderer.material.color += new Color(0f, 0.1f, 0.2f);
+            //_renderer.material.color += new Color(0f, 0.1f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant3"))
         {
@@ -173,7 +181,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, -0.1f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+            //_renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant31"))
         {
@@ -185,7 +194,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, -0.1f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+            //_renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant32"))
         {
@@ -197,7 +207,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, -0.1f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+            //_renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant33"))
         {
@@ -209,7 +220,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, -0.1f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+            //_renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant4"))
         {
@@ -221,7 +233,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.5f);
             currentY += CheckPossibility(currentY, 0.5f);
-            _renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+            //_renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant41"))
         {
@@ -233,7 +246,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.5f);
             currentY += CheckPossibility(currentY, 0.5f);
-            _renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+            //_renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant42"))
         {
@@ -245,7 +259,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.5f);
             currentY += CheckPossibility(currentY, 0.5f);
-            _renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+            //_renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant43"))
         {
@@ -257,7 +272,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.5f);
             currentY += CheckPossibility(currentY, 0.5f);
-            _renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+            //_renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant5"))
         {
@@ -269,7 +285,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.4f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant51"))
         {
@@ -281,7 +298,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.4f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant52"))
         {
@@ -293,7 +311,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.4f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant53"))
         {
@@ -305,7 +324,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.4f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant6"))
         {
@@ -317,7 +337,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.4f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant61"))
         {
@@ -329,7 +350,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.4f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant62"))
         {
@@ -341,7 +363,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.4f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("Plant63"))
         {
@@ -353,7 +376,8 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, 0.4f);
             currentY += CheckPossibility(currentY, 0.3f);
-            _renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
+            _renderer.material.color = PotionCheck();
         }
         else if (!isEmpty && other.CompareTag("EmptyBottle"))
         {
@@ -368,6 +392,7 @@ public class Alchemy : MonoBehaviour
             currentX = 0f;
             currentY = 0f;
         }
+        //_renderer.material.color = PotionCheck();
     }
 
     Color PotionCheck()
@@ -378,46 +403,46 @@ public class Alchemy : MonoBehaviour
         {
             if      (currentX >= 0 && currentX <= 0.2f) // Левитация
             {
-                targetColor = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(0.45f, 0.6f, 0.6f);
             }
             else if (currentX > 0.2 && currentX <= 0.4) // Дождь в бутылке
             {
-                targetColor = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(0f, 0.4f, 0.75f);
             }
             else if (currentX > 0.4 && currentX <= 0.6) // Смелость
             {
-                targetColor = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(0.75f, 0f, 0f);
             }
             else if (currentX > 0.6 && currentX <= 0.8) // Очарование
             {
-                targetColor = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(1f, 0f, 0.7f);
             }
             else if (currentX > 0.8 && currentX <= 1) // Рост
             {
-                targetColor = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(0.6f, 0.65f, 0f);
             }
         }
         else
         {
             if (currentX >= 0 && currentX <= 0.2f) // Уменьшение
             {
-                targetColor = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(0.7f, 0.4f, 0.2f);
             }
             else if (currentX > 0.2 && currentX <= 0.4) // Невидимость
             {
-                targetColor = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(0.7f, 0.5f, 0.85f);
             }
             else if (currentX > 0.4 && currentX <= 0.6) // Сон
             {
-                targetColor = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(0.15f, 0.15f, 0.3f);
             }
             else if (currentX > 0.6 && currentX <= 0.8) // Вдохновение
             {
-                targetColor = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(0.1f, 1f, 0.7f);
             }
             else if (currentX > 0.8 && currentX <= 1) // Пушистость
             {
-                targetColor = new Color(0.75f, 0.6f, 0.1f);
+                targetColor = new Color(0.75f, 0.45f, 0.2f);
             }
         }
 
