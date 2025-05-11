@@ -40,7 +40,7 @@ public class MushroomSpawner : MonoBehaviour
         }
 
         // Если не удалось создать гриб
-        Debug.LogWarning("Не удалось создать гриб - все точки заняты");
+        //Debug.LogWarning("Не удалось создать гриб - все точки заняты");
     }
 
     private bool IsSpawnPointAvailable(Vector3 position)

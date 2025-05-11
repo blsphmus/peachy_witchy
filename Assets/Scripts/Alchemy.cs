@@ -6,7 +6,9 @@ using UnityEngine;
 public class Alchemy : MonoBehaviour
 {
     public GameObject Potion;
-    public GameObject PoofEffectPrefab;
+    public GameObject[] BottleSpawns;
+    public GameObject[] PoofEffectPrefab;
+    public GameObject[] RespawnablePrefabs;
     public bool isEmpty;
     public float currentX;
     public float currentY;
@@ -27,372 +29,217 @@ public class Alchemy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (isEmpty && other.CompareTag("Water"))
+        Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+        if (isEmpty)
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+            HandleEmptyPotion(other, collisionPoint);
+        }
+        else
+        {
+            HandleFilledPotion(other, collisionPoint);
+        }
 
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
+        // Обновляем цвет зелья после любых изменений
+        _renderer.material.color = PotionCheck();
+    }
 
+    void HandleEmptyPotion(Collider other, Vector3 collisionPoint)
+    {
+        if (other.CompareTag("Water"))
+        {
+            CreateEffect(collisionPoint);
+            DestroyAndRespawn(other.gameObject, 0);
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.2f, 0.3f, 0.9f);
-
-            currentX = 0f; currentY = 0f;
-
+            ResetValues();
         }
-        else if (isEmpty && other.CompareTag("Wine"))
+        else if (other.CompareTag("Wine"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
+            CreateEffect(collisionPoint);
+            DestroyAndRespawn(other.gameObject, 1);
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.75f, 0f, 0.2f);
-
-            currentX = 0f; currentY = 0f;
+            ResetValues();
         }
-        else if (isEmpty && other.CompareTag("Oil"))
+        else if (other.CompareTag("Oil"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
+            CreateEffect(collisionPoint);
+            DestroyAndRespawn(other.gameObject, 2);
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.75f, 0.6f, 0.1f);
-
-            currentX = 0f; currentY = 0f;
+            ResetValues();
         }
-        else if (!isEmpty && other.CompareTag("Plant1"))
+    }
+
+    void HandleFilledPotion(Collider other, Vector3 collisionPoint)
+    {
+        if (other.CompareTag("EmptyBottle"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.1f);
-            currentY += CheckPossibility(currentY, 0.2f);
-            //_renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
-            _renderer.material.color = PotionCheck();
+            Color potionColor = PotionCheck();
+            DestroyAndRespawn(other.gameObject, 3);
+            ActivateChildren(other.gameObject, true, potionColor);
+            isEmpty = true;
+            ResetValues();
+            CreateEffect(collisionPoint);
+            return;
         }
-        else if (!isEmpty && other.CompareTag("Plant11"))
+
+        // Обработка всех растений
+        float xModifier = 0f;
+        float yModifier = 0f;
+
+        if (other.CompareTag("Plant1"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.1f);
-            currentY += CheckPossibility(currentY, 0.2f);
-            //_renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0.1f;
+            yModifier = 0.2f;
+        }
+        else if (other.CompareTag("Plant11"))
+        {
+            xModifier = 0.1f;
+            yModifier = 0.1f;
         }
         else if (!isEmpty && other.CompareTag("Plant12"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.1f);
-            currentY += CheckPossibility(currentY, 0.2f);
-            //_renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0.3f;
+            yModifier = 0f;
         }
         else if (!isEmpty && other.CompareTag("Plant13"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.1f);
-            currentY += CheckPossibility(currentY, 0.2f);
-            //_renderer.material.color += new Color(0.3f, -0.1f, 0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = -0.1f;
+            yModifier = -0.2f;
         }
         else if (!isEmpty && other.CompareTag("Plant2"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0f);
-            currentY += CheckPossibility(currentY, -0.4f);
-            //_renderer.material.color += new Color(0f, 0.1f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0f;
+            yModifier = -0.4f;
         }
         else if (!isEmpty && other.CompareTag("Plant21"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0f);
-            currentY += CheckPossibility(currentY, -0.4f);
-            //_renderer.material.color += new Color(0f, 0.1f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = -0.1f;
+            yModifier = -0.2f;
         }
         else if (!isEmpty && other.CompareTag("Plant22"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0f);
-            currentY += CheckPossibility(currentY, -0.4f);
-            //_renderer.material.color += new Color(0f, 0.1f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0.1f;
+            yModifier = -0.1f;
         }
         else if (!isEmpty && other.CompareTag("Plant23"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0f);
-            currentY += CheckPossibility(currentY, -0.4f);
-            //_renderer.material.color += new Color(0f, 0.1f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0f;
+            yModifier = -0.2f;
+        }
+        else if (!isEmpty && other.CompareTag("Plant24"))
+        {
+            xModifier = 0f;
+            yModifier = 0.1f;
         }
         else if (!isEmpty && other.CompareTag("Plant3"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, -0.1f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = -0.1f;
+            yModifier = 0.3f;
         }
         else if (!isEmpty && other.CompareTag("Plant31"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, -0.1f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = -0.1f;
+            yModifier = -0.3f;
         }
         else if (!isEmpty && other.CompareTag("Plant32"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, -0.1f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0f;
+            yModifier = 0.1f;
         }
         else if (!isEmpty && other.CompareTag("Plant33"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, -0.1f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(-0.1f, -0.1f, -0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = -0.3f;
+            yModifier = 0f;
         }
         else if (!isEmpty && other.CompareTag("Plant4"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.5f);
-            currentY += CheckPossibility(currentY, 0.5f);
-            //_renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0.5f;
+            yModifier = 0.5f;
         }
         else if (!isEmpty && other.CompareTag("Plant41"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.5f);
-            currentY += CheckPossibility(currentY, 0.5f);
-            //_renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0.15f;
+            yModifier = 0.15f;
         }
         else if (!isEmpty && other.CompareTag("Plant42"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.5f);
-            currentY += CheckPossibility(currentY, 0.5f);
-            //_renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0.25f;
+            yModifier = -0.05f;
         }
         else if (!isEmpty && other.CompareTag("Plant43"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.5f);
-            currentY += CheckPossibility(currentY, 0.5f);
-            //_renderer.material.color += new Color(0.2f, 0.2f, -0.1f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0.05f;
+            yModifier = -0.25f;
         }
         else if (!isEmpty && other.CompareTag("Plant5"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.4f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = -0.2f;
+            yModifier = -0.15f;
         }
         else if (!isEmpty && other.CompareTag("Plant51"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.4f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0.1f;
+            yModifier = -0.15f;
         }
         else if (!isEmpty && other.CompareTag("Plant52"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.4f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = -0.05f;
+            yModifier = 0.05f;
         }
         else if (!isEmpty && other.CompareTag("Plant53"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.4f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0.2f;
+            yModifier = 0.1f;
         }
         else if (!isEmpty && other.CompareTag("Plant6"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.4f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = -0.1f;
+            yModifier = -0.1f;
         }
         else if (!isEmpty && other.CompareTag("Plant61"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.4f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = -0.15f;
+            yModifier = -0.15f;
         }
         else if (!isEmpty && other.CompareTag("Plant62"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.4f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = 0.2f;
+            yModifier = 0.2f;
         }
         else if (!isEmpty && other.CompareTag("Plant63"))
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Destroy(other.gameObject);
-            currentX += CheckPossibility(currentX, 0.4f);
-            currentY += CheckPossibility(currentY, 0.3f);
-            //_renderer.material.color += new Color(0.25f, 0.2f, 0.2f);
-            _renderer.material.color = PotionCheck();
+            xModifier = -0.25f;
+            yModifier = -0.25f;
         }
-        else if (!isEmpty && other.CompareTag("EmptyBottle"))
+
+        if (xModifier != 0 || yModifier != 0)
         {
-            Vector3 collisionPoint = other.ClosestPoint(transform.position);
-            GameObject effect = Instantiate(PoofEffectPrefab, collisionPoint, Quaternion.identity);
-            Destroy(effect, 1f);
-
-            Color potionColor = PotionCheck(); // РџРѕР»СѓС‡Р°РµРј С†РІРµС‚
-            ActivateChildren(other.gameObject, true, potionColor); // РџРµСЂРµРґР°РµРј С†РІРµС‚
-
-            isEmpty = true;
-            currentX = 0f;
-            currentY = 0f;
+            CreateEffect(collisionPoint);
+            Destroy(other.gameObject);
+            currentX += CheckPossibility(currentX, xModifier);
+            currentY += CheckPossibility(currentY, yModifier);
         }
-        //_renderer.material.color = PotionCheck();
+    }
+
+    void CreateEffect(Vector3 position)
+    {
+        foreach (var effectPrefab in PoofEffectPrefab)
+        {
+            GameObject effect = Instantiate(effectPrefab, position, Quaternion.identity);
+            Destroy(effect, 1f);
+        }
+    }
+
+    void ResetValues()
+    {
+        currentX = 0f;
+        currentY = 0f;
     }
 
     Color PotionCheck()
@@ -449,6 +296,34 @@ public class Alchemy : MonoBehaviour
         return targetColor;
     }
 
+    void DestroyAndRespawn(GameObject objToDestroy, int prefabIndex)
+    {
+        //// Создаем эффект на месте уничтожения
+        //CreateEffect(objToDestroy.transform.position);
+
+        // Запускаем корутину для респавна с задержкой
+        StartCoroutine(RespawnWithDelay(prefabIndex, 2f)); // Респавн через 2 секунды
+    }
+
+    IEnumerator RespawnWithDelay(int prefabIndex, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Проверяем, что индекс в пределах массива
+        if (prefabIndex >= 0 && prefabIndex < RespawnablePrefabs.Length &&
+            prefabIndex < BottleSpawns.Length && BottleSpawns[prefabIndex] != null)
+        {
+            // Создаем новый объект в точке спавна
+            GameObject newObj = Instantiate(
+                RespawnablePrefabs[prefabIndex],
+                BottleSpawns[prefabIndex].transform.position,
+                Quaternion.identity
+            );
+
+            // Создаем эффект в точке спавна
+            CreateEffect(BottleSpawns[prefabIndex].transform.position);
+        }
+    }
 
     float CheckPossibility(float a, float b)
     {

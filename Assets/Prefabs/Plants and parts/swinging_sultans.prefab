@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustMushroomPrefabs:
-  - {fileID: 6111935535758969837, guid: dd60d50b7f4ebf64fa7b3f36d51288eb, type: 3}
+  - {fileID: 1616148100060915986, guid: 289ef88962aef3e4fb3fe9c2e8211bf7, type: 3}
   explosionForce: 5
   explosionRadius: 2
 --- !u!114 &5061908004983810161
