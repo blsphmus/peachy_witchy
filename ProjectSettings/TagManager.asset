@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< Updated upstream
+
   - Mushroom
-=======
   - EmptyBottle
   - Oil
   - Water
@@ -39,7 +38,7 @@ TagManager:
   - Plant62
   - Plant63
   - FullBottle
->>>>>>> Stashed changes
+  - Sound
   layers:
   - Default
   - TransparentFX

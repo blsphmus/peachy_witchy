@@ -1,7 +1,5 @@
 {
   "dependencies": {
-<<<<<<< Updated upstream
-=======
     "com.merry-yellow.code-assist": {
       "version": "file:com.merry-yellow.code-assist",
       "depth": 0,
@@ -14,6 +12,7 @@
       "source": "builtin",
       "dependencies": {}
     },
+
     "com.unity.burst": {
       "version": "1.8.21",
       "depth": 1,
@@ -24,7 +23,7 @@
       },
       "url": "https://packages.unity.com"
     },
->>>>>>> Stashed changes
+
     "com.unity.collab-proxy": {
       "version": "2.8.2",
       "depth": 0,
