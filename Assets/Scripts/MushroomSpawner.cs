@@ -1,22 +1,22 @@
 using UnityEngine;
+using System.Collections;
 
 public class MushroomSpawner : MonoBehaviour
 {
-    public GameObject[] mushroomPrefabs; // Массив префабов грибов
-    public Transform[] spawnPoints; // Массив точек спавна
-    public float spawnInterval = 2f; // Интервал спавна в секундах
-    public string mushroomTag = "Mushroom"; // Тег для грибов
-    public float minScale = 1f; // Минимальный масштаб
-    public float maxScale = 1f; // Максимальный масштаб
-    public float spawnRadius = 0.5f; // Радиус проверки спавна
+    public GameObject[] mushroomPrefabs;
+    public Transform[] spawnPoints;
+    public float spawnInterval = 2f;
+    public string[] mushroomTags = { "Plant1", "Plant2", "Plant3", "Plant4", "Plant5", "Plant6" }; // Исправлено на массив строк
+    public float minScale = 1f;
+    public float maxScale = 1f;
+    public float spawnRadius = 0.5f;
 
     private void Start()
     {
-        // Запускаем корутину для спавна грибов
         StartCoroutine(SpawnMushrooms());
     }
 
-    private System.Collections.IEnumerator SpawnMushrooms()
+    private IEnumerator SpawnMushrooms()
     {
         while (true)
         {
@@ -27,56 +27,84 @@ public class MushroomSpawner : MonoBehaviour
 
     private void SpawnMushroom()
     {
-        // Переменная для отслеживания, была ли найдена свободная точка
-        bool mushroomSpawned = false;
+        // Перемешиваем точки спавна для более случайного распределения
+        ShuffleSpawnPoints();
 
-        // Попытка спавна гриба
-        for (int i = 0; i < spawnPoints.Length; i++)
+        foreach (Transform spawnPoint in spawnPoints)
         {
-            // Выбираем случайную точку спавна
-            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-
-            // Проверяем, есть ли гриб на точке спавна
-            Collider[] colliders = Physics.OverlapSphere(spawnPoint.position, spawnRadius);
-            bool isOccupied = false;
-
-            foreach (var collider in colliders)
+            if (IsSpawnPointAvailable(spawnPoint.position))
             {
-                if (collider.CompareTag(mushroomTag))
-                {
-                    // Если гриб уже есть, помечаем точку как занятую
-                    isOccupied = true;
-                    break;
-                }
-            }
-
-            // Если точка свободна, спавним гриб
-            if (!isOccupied)
-            {
-                // Выбираем случайный префаб гриба
-                GameObject mushroomPrefab = mushroomPrefabs[Random.Range(0, mushroomPrefabs.Length)];
-
-                // Создаем гриб с поворотом на -90 градусов по оси X
-                Quaternion rotation = Quaternion.Euler(-90, 0, 0);
-                GameObject mushroom = Instantiate(mushroomPrefab, spawnPoint.position, rotation);
-
-                // Генерируем случайный масштаб в заданных пределах
-                float randomScale = Random.Range(minScale, maxScale);
-                Vector3 uniformScale = new Vector3(randomScale, randomScale, randomScale);
-
-                // Применяем масштаб к грибу
-                mushroom.transform.localScale = uniformScale;
-
-                // Устанавливаем флаг, что гриб был успешно заспавнен
-                mushroomSpawned = true;
-                break; // Выходим из цикла, так как гриб успешно заспавнен
+                CreateMushroom(spawnPoint);
+                return; // Выходим после успешного создания гриба
             }
         }
 
-        // Если гриб не был заспавнен, можно добавить логику для обработки этого случая
-        if (!mushroomSpawned)
+        // Если не удалось создать гриб
+        //Debug.LogWarning("Не удалось создать гриб - все точки заняты");
+    }
+
+    private bool IsSpawnPointAvailable(Vector3 position)
+    {
+        Collider[] colliders = Physics.OverlapSphere(position, spawnRadius);
+        foreach (var collider in colliders)
         {
-            Debug.Log("Не удалось заспавнить гриб, все точки заняты.");
+            foreach (string tag in mushroomTags) // Проверяем все теги из списка
+            {
+                if (collider.CompareTag(tag))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void CreateMushroom(Transform spawnPoint)
+    {
+        GameObject mushroomPrefab = mushroomPrefabs[Random.Range(0, mushroomPrefabs.Length)];
+        Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+        GameObject mushroom = Instantiate(mushroomPrefab, spawnPoint.position, rotation);
+
+        float randomScale = Random.Range(minScale, maxScale);
+        mushroom.transform.localScale = Vector3.one * randomScale;
+
+        // Назначаем PlayerLook и LineRendererLocation
+        DragRigidbody dragRb = mushroom.GetComponent<DragRigidbody>();
+        if (dragRb != null)
+        {
+            // Находим игрока в сцене
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
+            {
+                // Получаем компонент PlayerLook
+                dragRb.playerLook = player.GetComponent<PlayerLook>();
+
+                // Находим LineRendererLocation в иерархии игрока
+                Transform lineRenderLocation = player.transform.Find("Main Camera/wand/LineRendererLocation");
+                if (lineRenderLocation != null)
+                {
+                    dragRb.lineRenderLocation = lineRenderLocation;
+
+                    // Находим LineRenderer
+                    dragRb.lr = lineRenderLocation.GetComponent<LineRenderer>();
+                    if (dragRb.lr == null)
+                    {
+                        dragRb.lr = lineRenderLocation.GetComponentInChildren<LineRenderer>();
+                    }
+                }
+            }
+        }
+    }
+
+    private void ShuffleSpawnPoints()
+    {
+        // Алгоритм Фишера-Йетса для перемешивания массива
+        for (int i = spawnPoints.Length - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            Transform temp = spawnPoints[i];
+            spawnPoints[i] = spawnPoints[j];
+            spawnPoints[j] = temp;
         }
     }
 }
