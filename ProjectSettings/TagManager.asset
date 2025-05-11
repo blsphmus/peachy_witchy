@@ -4,23 +4,37 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Mushroom
-  - Water
-  - Oil
-  - Wine
-  - Plant1
-  - Plant2
-  - Plant3
-  - Plant4
-  - Plant5
   - EmptyBottle
-  - Plant6
-  - Plant7
-  - Plant8
-  - Plant9
-  - Plant10
+  - Oil
+  - Water
   - CuttingBoard
+  - Wine
   - Mortar
+  - Plant1
+  - Plant11
+  - Plant12
+  - Plant13
+  - Plant2
+  - Plant21
+  - Plant22
+  - Plant23
+  - Plant24
+  - Plant3
+  - Plant31
+  - Plant32
+  - Plant33
+  - Plant4
+  - Plant41
+  - Plant42
+  - Plant43
+  - Plant5
+  - Plant51
+  - Plant52
+  - Plant53
+  - Plant6
+  - Plant61
+  - Plant62
+  - Plant63
   layers:
   - Default
   - TransparentFX

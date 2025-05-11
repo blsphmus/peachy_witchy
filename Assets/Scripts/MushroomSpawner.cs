@@ -1,22 +1,22 @@
-п»їusing UnityEngine;
+using UnityEngine;
+using System.Collections;
 
 public class MushroomSpawner : MonoBehaviour
 {
-    public GameObject[] mushroomPrefabs; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-    public Transform[] spawnPoints; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-    public float spawnInterval = 2f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    public string mushroomTag = "Mushroom"; // пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-    public float minScale = 1f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    public float maxScale = 1f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-    public float spawnRadius = 0.5f; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    public GameObject[] mushroomPrefabs;
+    public Transform[] spawnPoints;
+    public float spawnInterval = 2f;
+    public string[] mushroomTags = { "Plant1", "Plant2", "Plant3", "Plant4", "Plant5", "Plant6" }; // Исправлено на массив строк
+    public float minScale = 1f;
+    public float maxScale = 1f;
+    public float spawnRadius = 0.5f;
 
     private void Start()
     {
-        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         StartCoroutine(SpawnMushrooms());
     }
 
-    private System.Collections.IEnumerator SpawnMushrooms()
+    private IEnumerator SpawnMushrooms()
     {
         while (true)
         {
@@ -27,56 +27,84 @@ public class MushroomSpawner : MonoBehaviour
 
     private void SpawnMushroom()
     {
-        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-        bool mushroomSpawned = false;
+        // Перемешиваем точки спавна для более случайного распределения
+        ShuffleSpawnPoints();
 
-        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-        for (int i = 0; i < spawnPoints.Length; i++)
+        foreach (Transform spawnPoint in spawnPoints)
         {
-            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-
-            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-            Collider[] colliders = Physics.OverlapSphere(spawnPoint.position, spawnRadius);
-            bool isOccupied = false;
-
-            foreach (var collider in colliders)
+            if (IsSpawnPointAvailable(spawnPoint.position))
             {
-                if (collider.CompareTag(mushroomTag))
-                {
-                    // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-                    isOccupied = true;
-                    break;
-                }
-            }
-
-            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
-            if (!isOccupied)
-            {
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-                GameObject mushroomPrefab = mushroomPrefabs[Random.Range(0, mushroomPrefabs.Length)];
-
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ -90 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ X
-                Quaternion rotation = Quaternion.Euler(-90, 0, 0);
-                GameObject mushroom = Instantiate(mushroomPrefab, spawnPoint.position, rotation);
-
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-                float randomScale = Random.Range(minScale, maxScale);
-                Vector3 uniformScale = new Vector3(randomScale, randomScale, randomScale);
-
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
-                mushroom.transform.localScale = uniformScale;
-
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-                mushroomSpawned = true;
-                break; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                CreateMushroom(spawnPoint);
+                return; // Выходим после успешного создания гриба
             }
         }
 
-        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-        if (!mushroomSpawned)
+        // Если не удалось создать гриб
+        //Debug.LogWarning("Не удалось создать гриб - все точки заняты");
+    }
+
+    private bool IsSpawnPointAvailable(Vector3 position)
+    {
+        Collider[] colliders = Physics.OverlapSphere(position, spawnRadius);
+        foreach (var collider in colliders)
         {
-            Debug.Log("пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.");
+            foreach (string tag in mushroomTags) // Проверяем все теги из списка
+            {
+                if (collider.CompareTag(tag))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void CreateMushroom(Transform spawnPoint)
+    {
+        GameObject mushroomPrefab = mushroomPrefabs[Random.Range(0, mushroomPrefabs.Length)];
+        Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+        GameObject mushroom = Instantiate(mushroomPrefab, spawnPoint.position, rotation);
+
+        float randomScale = Random.Range(minScale, maxScale);
+        mushroom.transform.localScale = Vector3.one * randomScale;
+
+        // Назначаем PlayerLook и LineRendererLocation
+        DragRigidbody dragRb = mushroom.GetComponent<DragRigidbody>();
+        if (dragRb != null)
+        {
+            // Находим игрока в сцене
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
+            {
+                // Получаем компонент PlayerLook
+                dragRb.playerLook = player.GetComponent<PlayerLook>();
+
+                // Находим LineRendererLocation в иерархии игрока
+                Transform lineRenderLocation = player.transform.Find("Main Camera/wand/LineRendererLocation");
+                if (lineRenderLocation != null)
+                {
+                    dragRb.lineRenderLocation = lineRenderLocation;
+
+                    // Находим LineRenderer
+                    dragRb.lr = lineRenderLocation.GetComponent<LineRenderer>();
+                    if (dragRb.lr == null)
+                    {
+                        dragRb.lr = lineRenderLocation.GetComponentInChildren<LineRenderer>();
+                    }
+                }
+            }
+        }
+    }
+
+    private void ShuffleSpawnPoints()
+    {
+        // Алгоритм Фишера-Йетса для перемешивания массива
+        for (int i = spawnPoints.Length - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            Transform temp = spawnPoints[i];
+            spawnPoints[i] = spawnPoints[j];
+            spawnPoints[j] = temp;
         }
     }
 }
