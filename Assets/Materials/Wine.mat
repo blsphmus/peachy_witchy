@@ -119,7 +119,7 @@ Material:
     - _ZWriteControl: 1
     m_Colors:
     - _Color: {r: 0.216981, g: 0.5513923, b: 1, a: 1}
-    - _ColorBack: {r: 1, g: 0.4433962, b: 0.6446662, a: 1}
+    - _ColorBack: {r: 0.9169811, g: 0.4135066, b: 0.47780403, a: 1}
     - _ColorFront: {r: 0.7660377, g: 0.07371305, b: 0.27252656, a: 1}
     - _Color_1: {r: 0.17614087, g: 0.17757568, b: 0.6528301, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
