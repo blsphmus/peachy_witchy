@@ -41,7 +41,7 @@ public class Alchemy : MonoBehaviour
             //_renderer.material.color = PotionCheck();
         }
 
-        // Обновляем цвет зелья после любых изменений
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         
     }
 
@@ -89,7 +89,7 @@ public class Alchemy : MonoBehaviour
             return;
         }
 
-        // Обработка всех растений
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         float xModifier = 0f;
         float yModifier = 0f;
 
@@ -250,46 +250,46 @@ public class Alchemy : MonoBehaviour
 
         if (currentY <= 0.5f)
         {
-            if      (currentX >= 0 && currentX <= 0.2f) // Левитация
+            if      (currentX >= 0 && currentX <= 0.2f) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.45f, 0.6f, 0.6f);
             }
-            else if (currentX > 0.2 && currentX <= 0.4) // Дождь в бутылке
+            else if (currentX > 0.2 && currentX <= 0.4) // пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0f, 0.4f, 0.75f);
             }
-            else if (currentX > 0.4 && currentX <= 0.6) // Смелость
+            else if (currentX > 0.4 && currentX <= 0.6) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0f, 0f);
             }
-            else if (currentX > 0.6 && currentX <= 0.8) // Очарование
+            else if (currentX > 0.6 && currentX <= 0.8) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(1f, 0f, 0.7f);
             }
-            else if (currentX > 0.8 && currentX <= 1) // Рост
+            else if (currentX > 0.8 && currentX <= 1) // пїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.6f, 0.65f, 0f);
             }
         }
         else
         {
-            if (currentX >= 0 && currentX <= 0.2f) // Уменьшение
+            if (currentX >= 0 && currentX <= 0.2f) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.7f, 0.4f, 0.2f);
             }
-            else if (currentX > 0.2 && currentX <= 0.4) // Невидимость
+            else if (currentX > 0.2 && currentX <= 0.4) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.7f, 0.5f, 0.85f);
             }
-            else if (currentX > 0.4 && currentX <= 0.6) // Сон
+            else if (currentX > 0.4 && currentX <= 0.6) // пїЅпїЅпїЅ
             {
                 targetColor = new Color(0.15f, 0.15f, 0.3f);
             }
-            else if (currentX > 0.6 && currentX <= 0.8) // Вдохновение
+            else if (currentX > 0.6 && currentX <= 0.8) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.1f, 1f, 0.7f);
             }
-            else if (currentX > 0.8 && currentX <= 1) // Пушистость
+            else if (currentX > 0.8 && currentX <= 1) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 targetColor = new Color(0.75f, 0.45f, 0.2f);
             }
@@ -300,29 +300,29 @@ public class Alchemy : MonoBehaviour
 
     void DestroyAndRespawn(GameObject objToDestroy, int prefabIndex)
     {
-        //// Создаем эффект на месте уничтожения
+        //// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         //CreateEffect(objToDestroy.transform.position);
 
-        // Запускаем корутину для респавна с задержкой
-        StartCoroutine(RespawnWithDelay(prefabIndex, 2f)); // Респавн через 2 секунды
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        StartCoroutine(RespawnWithDelay(prefabIndex, 2f)); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 
     IEnumerator RespawnWithDelay(int prefabIndex, float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        // Проверяем, что индекс в пределах массива
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (prefabIndex >= 0 && prefabIndex < RespawnablePrefabs.Length &&
             prefabIndex < BottleSpawns.Length && BottleSpawns[prefabIndex] != null)
         {
-            // Создаем новый объект в точке спавна
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             GameObject newObj = Instantiate(
                 RespawnablePrefabs[prefabIndex],
                 BottleSpawns[prefabIndex].transform.position,
                 Quaternion.identity
             );
 
-            // Создаем эффект в точке спавна
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             CreateEffect(BottleSpawns[prefabIndex].transform.position);
         }
     }
