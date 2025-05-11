@@ -477,7 +477,16 @@ Transform:
   - {fileID: 1714398466}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1 &108359027
+=======
+--- !u!4 &108359028 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4316025459162394329, guid: bafcdb7ea22a2aa4d890fdccfe16bc06, type: 3}
+  m_PrefabInstance: {fileID: 7133878245695721941}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &177381718
+>>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -642,6 +651,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 108359027}
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -740,6 +750,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276077462}
   m_Mesh: {fileID: 8691780276856062721, guid: ff30396dcc5371845b7d34fef58d0e65, type: 3}
+=======
+  m_GameObject: {fileID: 177381718}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 11.84, y: -2.1332998, z: 0.110361785}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+>>>>>>> Stashed changes
 --- !u!1 &355553265
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,6 +2726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wand
       objectReference: {fileID: 0}
+    - target: {fileID: 6770357921284752708, guid: 922539e36a174fc47920bc86a9b05054, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a450cdc3e67953a4ba1dd446c64e4389, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -5568371526223589888, guid: 922539e36a174fc47920bc86a9b05054, type: 3}
@@ -2918,6 +2943,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 1714398465}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1823720440
@@ -3198,6 +3224,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.99999994, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+=======
+  m_GameObject: {fileID: 1808171294}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -441, y: -2, z: -466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes
 --- !u!1 &1920285907
 GameObject:
   m_ObjectHideFlags: 0
@@ -4371,8 +4408,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5599837585951659524}
   serializedVersion: 2
+<<<<<<< Updated upstream
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.07, y: -0, z: -1.22}
+=======
+  m_LocalRotation: {x: -0.6595263, y: -0.25500008, z: -0.25500003, w: 0.6595263}
+  m_LocalPosition: {x: -1.652, y: -0.021, z: 1.615}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4928,6 +4970,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
+<<<<<<< Updated upstream
   m_Size: {x: 0.020184059, y: 0.020244468, z: 0.0005227708}
   m_Center: {x: 0.000014381949, y: -0.0000057211137, z: -0.0064463792}
 --- !u!1 &7774818896767749113
@@ -5144,6 +5187,10 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02020855, y: 0.024207702, z: 0.025074622}
   m_Center: {x: -0.019314595, y: -0.000000029336661, z: 0.0025373122}
+=======
+  m_Size: {x: 0.020184059, y: 0.020244468, z: 0.00017181212}
+  m_Center: {x: 0.000014381409, y: -0.0000057208536, z: -0.0066218614}
+>>>>>>> Stashed changes
 --- !u!4 &8330623915443565563
 Transform:
   m_ObjectHideFlags: 0
@@ -5645,3 +5692,9 @@ SceneRoots:
   - {fileID: 1348239410}
   - {fileID: 2108809149}
   - {fileID: 1462004369}
+<<<<<<< Updated upstream
+=======
+  - {fileID: 1485791534}
+  - {fileID: 177381721}
+  - {fileID: 1808171297}
+>>>>>>> Stashed changes
