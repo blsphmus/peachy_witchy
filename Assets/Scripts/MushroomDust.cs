@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class MushroomDust : MonoBehaviour
 {
-    [SerializeField] private GameObject[] DustMushroomPrefabs; // Массив префабов нарезанных частей
+    [SerializeField] private GameObject[] DustMushroomPrefabs; 
     [SerializeField] private float explosionForce = 5f; // Сила "разлёта" кусочков
     [SerializeField] private float explosionRadius = 2f; // Радиус "взрыва"
+
+    //private Dictionary<string, int> mushroomToDustIndex = new Dictionary<string, int>()
+    //{
+    //    {"Plant1", 0},  // Plant1 -> Plant13 (индекс 0 в массиве)
+    //    {"Plant2", 1},  // Plant2 -> Plant23 (индекс 1)
+    //    {"Plant3", 2},
+    //    {"Plant4", 3},
+    //    {"Plant5", 4},
+    //    {"Plant6", 5},
+    //};
 
     private void OnCollisionEnter(Collision collision)
     {
