@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class DragRigidbody : MonoBehaviour
@@ -13,10 +13,10 @@ public class DragRigidbody : MonoBehaviour
     Transform jointTrans;
     float dragDepth;
 
-    // ����� ���������� ��� ���������� ������������/����������
-    public float scrollSpeed = 0.5f;  // �������� ��������� ����������
-    public float minDepth = 5.0f;     // ����������� ���������� �� ������
-    public float maxDepth = 15.0f;   // ������������ ���������� �� ������
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public float scrollSpeed = 0.5f;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public float minDepth = 1.0f;     // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    public float maxDepth = 15.0f;   // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
     [Header("Rotation Settings")]
     public Vector3 rotationAxis = Vector3.up; // ��� �������� (���������)
@@ -25,58 +25,60 @@ public class DragRigidbody : MonoBehaviour
 
     private Vector3 previousMousePosition;
 
-    void Awake()
+    [Header("References")]
+    public PlayerLook playerLook;
+
+    void Start()
     {
-        // ����� LineRendererLocation �� ��������� ������� Player
-        GameObject player = GameObject.Find("Player");
-        if (player != null)
+        AutoAssignReferences();
+    }
+
+    
+
+    private void AutoAssignReferences()
+    {
+        // »щем PlayerLook
+        if (playerLook == null)
         {
-            Transform mainCamera = player.transform.Find("Main Camera");
-            if (mainCamera != null)
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
             {
-                Transform wand = mainCamera.Find("wand");
-                if (wand != null)
-                {
-                    Transform foundLocation = wand.Find("LineRendererLocation");
-                    if (foundLocation != null)
-                    {
-                        lineRenderLocation = foundLocation;
+                playerLook = player.GetComponent<PlayerLook>();
 
-                        // ������� ����� LineRenderer �� ������� ��� ��� �����
-                        LineRenderer foundLR = foundLocation.GetComponent<LineRenderer>();
-                        if (foundLR == null)
-                        {
-                            foundLR = foundLocation.GetComponentInChildren<LineRenderer>();
-                        }
-
-                        if (foundLR != null)
-                        {
-                            lr = foundLR;
-                        }
-                        else
-                        {
-                            Debug.LogWarning("LineRenderer �� ������ �� ������� LineRendererLocation ��� ��� �����");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("LineRendererLocation �� ������ � wand");
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning("wand �� ������ � Main Camera");
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Main Camera �� ������� � Player");
+                // ≈сли не нашли, попробуем найти в дочерних объектах
+                if (playerLook == null)
+                    playerLook = player.GetComponentInChildren<PlayerLook>();
             }
         }
-        else
+
+        // »щем LineRendererLocation
+        if (lineRenderLocation == null || lr == null)
         {
-            Debug.LogWarning("Player �� ������ � �����");
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
+            {
+                Transform mainCamera = player.transform.Find("Main Camera");
+                if (mainCamera != null)
+                {
+                    Transform wand = mainCamera.Find("wand");
+                    if (wand != null)
+                    {
+                        // ѕоиск LineRendererLocation
+                        if (lineRenderLocation == null)
+                            lineRenderLocation = wand.Find("LineRendererLocation");
+
+                        // ѕоиск LineRenderer
+                        if (lr == null && lineRenderLocation != null)
+                        {
+                            lr = lineRenderLocation.GetComponent<LineRenderer>();
+                            if (lr == null)
+                                lr = lineRenderLocation.GetComponentInChildren<LineRenderer>();
+                        }
+                    }
+                }
+            }
         }
+
     }
 
     void FixedUpdate()
@@ -185,4 +187,6 @@ public class DragRigidbody : MonoBehaviour
         if (lr != null)
             lr.positionCount = 0;
     }
+
+    
 }
