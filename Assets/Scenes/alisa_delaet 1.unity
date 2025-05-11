@@ -657,8 +657,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.019999998, y: 0.020000003, z: 0.025074625}
   m_Center: {x: -0.000000008384045, y: 1.134266e-10, z: 0.0025373108}
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &161935250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5682,7 +5680,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 8b71341e4f60571428efe0df27d31d85, type: 3}
->>>>>>> Stashed changes
 --- !u!1 &276077462
 GameObject:
   m_ObjectHideFlags: 0
@@ -7635,13 +7632,6 @@ MonoBehaviour:
   - {fileID: 637955352}
   - {fileID: 749452094}
   - {fileID: 2116358356}
-<<<<<<< Updated upstream
-  spawnInterval: 1
-  mushroomTag: Mushroom
-  minScale: 20
-  maxScale: 50
-  spawnRadius: 0.5
-=======
   spawnInterval: 10
   mushroomTags:
   - Plant1
@@ -7652,7 +7642,6 @@ MonoBehaviour:
   minScale: 40
   maxScale: 80
   spawnRadius: 30
->>>>>>> Stashed changes
 --- !u!4 &1348239410
 Transform:
   m_ObjectHideFlags: 0
@@ -7853,8 +7842,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 395612693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1485791533
 GameObject:
   m_ObjectHideFlags: 0
@@ -7918,7 +7905,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1485791534}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &1714398465
 GameObject:
   m_ObjectHideFlags: 0
@@ -10843,10 +10829,7 @@ SceneRoots:
   - {fileID: 1348239410}
   - {fileID: 2108809149}
   - {fileID: 1462004369}
-<<<<<<< Updated upstream
-=======
   - {fileID: 1485791534}
   - {fileID: 177381721}
   - {fileID: 1808171297}
   - {fileID: 161935250}
->>>>>>> Stashed changes
