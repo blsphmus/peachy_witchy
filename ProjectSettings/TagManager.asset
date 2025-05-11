@@ -35,6 +35,7 @@ TagManager:
   - Plant61
   - Plant62
   - Plant63
+  - Sound
   layers:
   - Default
   - TransparentFX

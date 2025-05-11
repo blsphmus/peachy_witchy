@@ -54,6 +54,7 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        Play_GameMusic.StopAndDestroyMusic();
         Time.timeScale = 1f;
         SceneManager.LoadScene("VASYA_MENU");
     }
