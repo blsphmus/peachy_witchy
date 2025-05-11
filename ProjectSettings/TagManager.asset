@@ -4,7 +4,42 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< Updated upstream
   - Mushroom
+=======
+  - EmptyBottle
+  - Oil
+  - Water
+  - CuttingBoard
+  - Wine
+  - Mortar
+  - Plant1
+  - Plant11
+  - Plant12
+  - Plant13
+  - Plant2
+  - Plant21
+  - Plant22
+  - Plant23
+  - Plant24
+  - Plant3
+  - Plant31
+  - Plant32
+  - Plant33
+  - Plant4
+  - Plant41
+  - Plant42
+  - Plant43
+  - Plant5
+  - Plant51
+  - Plant52
+  - Plant53
+  - Plant6
+  - Plant61
+  - Plant62
+  - Plant63
+  - FullBottle
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -13,7 +48,7 @@ TagManager:
   - Water
   - UI
   - Interactive
-  - 
+  - Post Processing
   - 
   - 
   - 
