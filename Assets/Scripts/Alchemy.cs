@@ -38,10 +38,11 @@ public class Alchemy : MonoBehaviour
         else
         {
             HandleFilledPotion(other, collisionPoint);
+            //_renderer.material.color = PotionCheck();
         }
 
         // Обновляем цвет зелья после любых изменений
-        _renderer.material.color = PotionCheck();
+        
     }
 
     void HandleEmptyPotion(Collider other, Vector3 collisionPoint)
@@ -53,7 +54,7 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.2f, 0.3f, 0.9f);
-            ResetValues();
+            //ResetValues();
         }
         else if (other.CompareTag("Wine"))
         {
@@ -62,7 +63,7 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.75f, 0f, 0.2f);
-            ResetValues();
+            //ResetValues();
         }
         else if (other.CompareTag("Oil"))
         {
@@ -71,7 +72,7 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             isEmpty = false;
             _renderer.material.color = new Color(0.75f, 0.6f, 0.1f);
-            ResetValues();
+            //ResetValues();
         }
     }
 
@@ -224,6 +225,7 @@ public class Alchemy : MonoBehaviour
             Destroy(other.gameObject);
             currentX += CheckPossibility(currentX, xModifier);
             currentY += CheckPossibility(currentY, yModifier);
+            _renderer.material.color = PotionCheck();
         }
     }
 
