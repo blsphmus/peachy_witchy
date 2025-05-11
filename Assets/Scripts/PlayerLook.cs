@@ -16,6 +16,8 @@ public class PlayerLook : MonoBehaviour
 
     void Update()
     {
+        if (!enabled) return; // ���������� ���������� ���� ������ ��������
+
         Vector2 MouseInput = new Vector2
         {
             x = Input.GetAxis("Mouse X"),
@@ -25,9 +27,16 @@ public class PlayerLook : MonoBehaviour
         XYRotation.x -= MouseInput.y * Sensitivities.y;
         XYRotation.y += MouseInput.x * Sensitivities.x;
 
-        XYRotation.x = Mathf.Clamp(XYRotation.x, -90f, 90f);
+        XYRotation.x = Mathf.Clamp(XYRotation.x, -85f, 85f);
 
         transform.eulerAngles = new Vector3(0f, XYRotation.y, 0f);
         PlayerCamera.localEulerAngles = new Vector3(XYRotation.x, 0f, 0f);
+    }
+
+    void OnDestroy()
+    {
+        // ������������ ������ ��� ����������� �������
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
